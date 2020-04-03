@@ -1,37 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "gubbins",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Gubbins",
+  "description": "A collection of gubbins!",
   "authors": [
-    "Me!"
+    "Lemons"
   ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "party.lemons.gubbins.Gubbins"
+    ],
+    "client": [
+      "party.lemons.gubbins.GubbinsClient"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "gubbins.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.15.x"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "minecraft": "1.16.x"
   }
 }

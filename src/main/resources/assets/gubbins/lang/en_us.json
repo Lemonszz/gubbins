@@ -1,0 +1,20 @@
+{
+  "item.gubbins.potion_flask": "Potion Flask",
+  "item.gubbins.quiver": "Quiver",
+  "item.gubbins.crimson_boat": "Crimson Boat",
+  "item.gubbins.warped_boat": "Warped Boat",
+  "item.gubbins.amethyst": "Amethyst",
+  "item.gubbins.garnet": "Garnet",
+  "item.gubbins.prismarine_arrow": "Prismarine Arrow",
+  "block.gubbins.amethyst_ore": "Amethyst Ore",
+  "block.gubbins.garnet_ore": "Garnet Ore",
+  "item.gubbins.display_item_chest": "",
+  "item.gubbins.display_item_leggings": "",
+  "item.gubbins.display_item_helmet": "",
+  "item.gubbins.display_item_feet": "",
+  "gubbins.potion_flask_doses": "Doses: %d/16",
+  "container.gubbins.quiver": "Quiver",
+  "entity.gubbins.new_boat": "Boat",
+  "entity.gubbins.prismarine_arrow": "Prismarine Arrow",
+  "itemGroup.gubbins.gubbins": "Gubbins"
+}

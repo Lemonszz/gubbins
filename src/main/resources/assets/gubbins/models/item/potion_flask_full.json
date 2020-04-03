@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gubbins:item/potion_flask_underlay",
+    "layer1": "gubbins:item/potion_flask"
+  }
+}

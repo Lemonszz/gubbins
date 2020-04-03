@@ -1,0 +1,6 @@
+{
+  "parent": "gubbins:block/ore_netherrack",
+  "textures": {
+    "ore": "gubbins:block/garnet_ore"
+  }
+}
