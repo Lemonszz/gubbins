@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "gubbins:onyx_block"
+    }
+  },
+  "result": {
+    "item": "gubbins:onyx",
+    "count": 9
+  }
+}

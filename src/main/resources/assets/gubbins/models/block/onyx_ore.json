@@ -1,0 +1,6 @@
+{
+  "parent": "gubbins:block/ore_stone",
+  "textures": {
+    "ore": "gubbins:block/onyx_ore"
+  }
+}

@@ -23,6 +23,7 @@ public final class Adornments
 	public static final Adornment LAPIS_LAZULI = new Adornment(Items.LAPIS_LAZULI, 0x0079c9);
 	public static final Adornment GARNET = new Adornment(GubbinsItems.GARNET, 0xff2b2b);
 	public static final Adornment AMETHYST = new Adornment(GubbinsItems.AMETHYST, 0x9a1fff);
+	public static final Adornment ONYX = new Adornment(GubbinsItems.ONYX, 0x262626);
 
 	private Adornments(){}
 }

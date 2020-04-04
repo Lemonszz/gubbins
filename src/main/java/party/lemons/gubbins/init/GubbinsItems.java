@@ -15,6 +15,7 @@ public class GubbinsItems
 	public static final QuiverItem QUIVER = new QuiverItem();
 	public static final Item GARNET = new Item(settings());
 	public static final Item AMETHYST = new Item(settings());
+	public static final Item ONYX = new Item(settings());
 	public static final Item PRISMARINE_ARROW = new PrismarineArrowItem(settings());
 	public static final Item TELESCOPE = new TelescopeItem(settings().maxDamage(600));
 
