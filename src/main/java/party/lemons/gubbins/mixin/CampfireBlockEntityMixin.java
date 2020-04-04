@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import party.lemons.gubbins.init.GubbinsColours;
 import party.lemons.gubbins.init.GubbinsParticles;
 import party.lemons.gubbins.misc.BlockProperties;
 import party.lemons.gubbins.misc.CampfireDye;
@@ -70,8 +71,12 @@ public class CampfireBlockEntityMixin implements CampfireDye
 					for(j = 0; j < random.nextInt(2) + 2; ++j)
 					{
 						boolean isSignal = be.getCachedState().get(CampfireBlock.SIGNAL_FIRE);
-						float[] colors = getColor().getColorComponents();
-						world.addImportantParticle(new DyedSmokeEffect(colors[0], colors[1], colors[2], isSignal), true, blockPos.getX() + 0.5D + random.nextDouble() / 3.0D * (double)(random.nextBoolean() ? 1 : -1), blockPos.getY() + random.nextDouble() + random.nextDouble(), (double)blockPos.getZ() + 0.5D + random.nextDouble() / 3.0D * (double)(random.nextBoolean() ? 1 : -1), 0.0D, 0.07D, 0.0D);
+						int color = GubbinsColours.brighten(getColor().getMaterialColor().color, 50);
+						int red = (color & 0xff0000) >>> 16;
+						int green = (color & 0x00ff00) >>> 8;
+						int blue = (color & 0x00ff);
+
+						world.addImportantParticle(new DyedSmokeEffect(red / 255F, green / 255F, blue / 255F, isSignal), true, blockPos.getX() + 0.5D + random.nextDouble() / 3.0D * (double)(random.nextBoolean() ? 1 : -1), blockPos.getY() + random.nextDouble() + random.nextDouble(), (double)blockPos.getZ() + 0.5D + random.nextDouble() / 3.0D * (double)(random.nextBoolean() ? 1 : -1), 0.0D, 0.07D, 0.0D);
 					}
 				}
 

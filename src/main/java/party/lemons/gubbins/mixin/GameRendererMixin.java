@@ -18,7 +18,7 @@ public class GameRendererMixin
 	{
 		if(EntityUtil.isUsingTelescope(MinecraftClient.getInstance().player) && MinecraftClient.getInstance().options.perspective == 0)
 		{
-			cbi.setReturnValue(10D);
+			cbi.setReturnValue(7D);
 		}
 	}
 }
