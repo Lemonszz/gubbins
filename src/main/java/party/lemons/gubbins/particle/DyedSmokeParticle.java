@@ -1,4 +1,4 @@
-package party.lemons.gubbins.init;
+package party.lemons.gubbins.particle;
 
 import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteBillboardParticle;

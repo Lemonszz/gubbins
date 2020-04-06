@@ -15,9 +15,17 @@ public class GubbinsBlocks
 	public static final Block AMETHYST_ORE = new GubbinsOreBlock(settings(Material.STONE, 1.5F).breakByTool(FabricToolTags.PICKAXES, 2).build());
 	public static final Block GARNET_ORE = new GubbinsOreBlock(settings(Material.STONE, 1.5F).breakByTool(FabricToolTags.PICKAXES, 2).sounds(BlockSoundGroup.NETHER_ORE).build());
 	public static final Block ONYX_ORE = new GubbinsOreBlock(settings(Material.STONE, 1.5F).breakByTool(FabricToolTags.PICKAXES, 2).build());
+	public static final Block DIAMOND_ICE_ORE = new GubbinsOreBlock(settings(Material.PACKED_ICE, 1.5F).breakByTool(FabricToolTags.PICKAXES, 3).build());
+	public static final Block GOLD_ICE_ORE = new GubbinsOreBlock(settings(Material.PACKED_ICE, 1.5F).sounds(BlockSoundGroup.GLASS).breakByTool(FabricToolTags.PICKAXES, 2).build());
+	public static final Block REDSTONE_ICE_ORE = new GubbinsOreBlock(settings(Material.PACKED_ICE, 1.5F).sounds(BlockSoundGroup.GLASS).breakByTool(FabricToolTags.PICKAXES, 2).build());
+	public static final Block COAL_ICE_ORE = new GubbinsOreBlock(settings(Material.PACKED_ICE, 1.5F).sounds(BlockSoundGroup.GLASS).breakByTool(FabricToolTags.PICKAXES, 0).build());
+	public static final Block IRON_ICE_ORE = new GubbinsOreBlock(settings(Material.PACKED_ICE, 1.5F).sounds(BlockSoundGroup.GLASS).breakByTool(FabricToolTags.PICKAXES, 1).build());
+
 	public static final Block AMETHYST_BLOCK = new GubbinsBlock(settings(Material.METAL, 2.5F).build());
 	public static final Block GARNET_BLOCK = new GubbinsBlock(settings(Material.METAL, 2.5F).build());
 	public static final Block ONYX_BLOCk = new GubbinsBlock(settings(Material.METAL, 2.5F).build());
+
+	public static final Block SNOW_BRICKS = new GubbinsBlock(settings(Material.SNOW_BLOCK, 0.25F).breakByTool(FabricToolTags.SHOVELS, 0).sounds(BlockSoundGroup.SNOW).build());
 
 	public static FabricBlockSettings settings(Material material, float hardness)
 	{

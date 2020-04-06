@@ -3,17 +3,12 @@ package party.lemons.gubbins.init;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.fabric.impl.client.particle.ParticleFactoryRegistryImpl;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.Sprite;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.*;
-import net.minecraft.util.Identifier;
-import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.particle.DyedSmokeEffect;
+import party.lemons.gubbins.particle.DyedSmokeParticle;
 import party.lemons.gubbins.particle.GubbinsParticleType;
 import party.lemons.gubbins.util.registry.AutoReg;
-
-import java.util.function.Function;
 
 @AutoReg(type = ParticleType.class, registry = "particle_type")
 public class GubbinsParticles

@@ -10,7 +10,11 @@
     "ConcretePowderBlockMixin",
     "PotionEntityMixin",
     "CampfireBlockEntityMixin",
-    "CampfireBlockMixin"
+    "CampfireBlockMixin",
+    "ChunkGeneratorMixin",
+    "FeatureMixin",
+    "StructurePlacementDataMixin",
+    "BiomeMixin"
   ],
   "client": [
     "ItemRendererMixin",

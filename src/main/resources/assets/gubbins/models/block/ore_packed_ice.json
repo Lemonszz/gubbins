@@ -1,0 +1,7 @@
+{
+  "parent": "gubbins:block/cube_all_overlayed",
+  "textures": {
+    "all": "block/packed_ice",
+    "overlay": "#ore"
+  }
+}

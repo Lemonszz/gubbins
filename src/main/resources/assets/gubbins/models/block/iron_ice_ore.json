@@ -1,0 +1,6 @@
+{
+  "parent": "gubbins:block/ore_packed_ice",
+  "textures": {
+    "ore": "gubbins:block/iron_ore"
+  }
+}
