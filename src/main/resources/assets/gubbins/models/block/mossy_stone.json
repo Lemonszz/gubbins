@@ -1,0 +1,7 @@
+{
+  "parent": "gubbins:block/cube_all_overlayed",
+  "textures": {
+    "all": "block/stone",
+    "overlay": "gubbins:block/moss"
+  }
+}

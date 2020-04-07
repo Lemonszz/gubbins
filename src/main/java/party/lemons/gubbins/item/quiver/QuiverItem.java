@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
@@ -27,7 +28,9 @@ public class QuiverItem extends Item
 			ItemStack stack = user.getStackInHand(hand);
 			int slot = user.inventory.getSlotWithStack(stack);
 			ContainerProviderRegistry.INSTANCE.openContainer(Gubbins.QUIVER, user, buf->buf.writeInt(slot));
+
 		}
+		user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
 
 		return super.use(world, user, hand);
 	}

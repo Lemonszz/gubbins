@@ -48,7 +48,7 @@ public class GubbinsGeneration
 		gatherBiomeFromCategory(Biome.Category.NETHER, GARNET_BIOMES);
 		gatherBiomeFromCategory(Biome.Category.OCEAN, ONYX_BIOMES);
 		gatherBiomeFromCategory(Biome.Category.ICY, ICY);
-		gatherBiomeFromCategory(Biome.Category.TAIGA, ICY);
+		ICY.add(Biomes.SNOWY_TAIGA);
 
 		AMETHYST_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.END_STONE, GubbinsBlocks.AMETHYST_ORE.getDefaultState(), 2)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(4, 0, 0, 50)))));
 		GARNET_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.NETHERRACK, GubbinsBlocks.GARNET_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(6, 0, 0, 128)))));
@@ -67,6 +67,12 @@ public class GubbinsGeneration
 		});
 
 		Biomes.SNOWY_TUNDRA.addStructureFeature(Feature.WOODLAND_MANSION.configure(FeatureConfig.DEFAULT));
+
+		//Cave Biomes
+		Registry.BIOME.forEach(b->
+		{
+			b.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, GubbinsFeatures.CAVE_BIOME.configure(FeatureConfig.DEFAULT).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(10))));
+		});
 
 		//TODO: make these work properly
 	/*	CAMP.forEach(b->{

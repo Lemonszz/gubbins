@@ -3,9 +3,9 @@ package party.lemons.gubbins.block;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
 
-public class GubbinsOreBlock extends GubbinsBlock
+public class LayeredBlock extends GubbinsBlock
 {
-	public GubbinsOreBlock(Settings settings)
+	public LayeredBlock(Settings settings)
 	{
 		super(settings);
 
