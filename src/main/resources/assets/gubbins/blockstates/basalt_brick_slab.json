@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gubbins:block/basalt_brick_slab"
+    },
+    "type=double": {
+      "model": "gubbins:block/basalt_bricks"
+    },
+    "type=top": {
+      "model": "gubbins:block/basalt_brick_slab_top"
+    }
+  }
+}

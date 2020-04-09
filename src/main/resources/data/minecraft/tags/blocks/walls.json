@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "gubbins:basalt_brick_wall",
+    "gubbins:hardened_dirt_wall",
+    "gubbins:hardened_dirt_brick_wall",
+    "gubbins:mossy_stone_wall",
+    "gubbins:snow_brick_wall",
+    "gubbins:polished_basalt_brick_wall"
+  ]
+}

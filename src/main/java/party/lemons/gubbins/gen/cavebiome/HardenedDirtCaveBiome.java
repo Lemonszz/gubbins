@@ -13,6 +13,7 @@ public class HardenedDirtCaveBiome extends CaveBiome
 	public HardenedDirtCaveBiome(float rarity)
 	{
 		super(rarity);
+		this.maxHeight = 90;
 		this.minHeight = 45;
 	}
 

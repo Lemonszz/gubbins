@@ -5,6 +5,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -19,36 +20,6 @@ public class GubbinsOreFeature extends Feature<GubbinsOreFeatureConfig>
 		super(null);
 	}
 
-	public boolean generate(IWorld iWorld, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random, BlockPos blockPos, GubbinsOreFeatureConfig oreFeatureConfig)
-	{
-		float f = random.nextFloat() * 3.1415927F;
-		float g = (float) oreFeatureConfig.size / 8.0F;
-		int i = MathHelper.ceil(((float) oreFeatureConfig.size / 16.0F * 2.0F + 1.0F) / 2.0F);
-		double d = (float) blockPos.getX() + MathHelper.sin(f) * g;
-		double e = (float) blockPos.getX() - MathHelper.sin(f) * g;
-		double h = (float) blockPos.getZ() + MathHelper.cos(f) * g;
-		double j = (float) blockPos.getZ() - MathHelper.cos(f) * g;
-		double l = blockPos.getY() + random.nextInt(3) - 2;
-		double m = blockPos.getY() + random.nextInt(3) - 2;
-		int n = blockPos.getX() - MathHelper.ceil(g) - i;
-		int o = blockPos.getY() - 2 - i;
-		int p = blockPos.getZ() - MathHelper.ceil(g) - i;
-		int q = 2 * (MathHelper.ceil(g) + i);
-		int r = 2 * (2 + i);
-
-		for(int s = n; s <= n + q; ++s)
-		{
-			for(int t = p; t <= p + q; ++t)
-			{
-				if(o <= iWorld.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, s, t))
-				{
-					return this.generateVeinPart(iWorld, random, oreFeatureConfig, d, e, h, j, l, m, n, o, p, q, r);
-				}
-			}
-		}
-
-		return false;
-	}
 
 	protected boolean generateVeinPart(IWorld world, Random random, GubbinsOreFeatureConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int size, int i)
 	{
@@ -154,5 +125,37 @@ public class GubbinsOreFeature extends Feature<GubbinsOreFeatureConfig>
 		}
 
 		return j > 0;
+	}
+
+	@Override
+	public boolean generate(IWorld world, StructureAccessor accessor, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, GubbinsOreFeatureConfig config)
+	{
+		float f = random.nextFloat() * 3.1415927F;
+		float g = (float) config.size / 8.0F;
+		int i = MathHelper.ceil(((float) config.size / 16.0F * 2.0F + 1.0F) / 2.0F);
+		double d = (float) pos.getX() + MathHelper.sin(f) * g;
+		double e = (float) pos.getX() - MathHelper.sin(f) * g;
+		double h = (float) pos.getZ() + MathHelper.cos(f) * g;
+		double j = (float) pos.getZ() - MathHelper.cos(f) * g;
+		double l = pos.getY() + random.nextInt(3) - 2;
+		double m = pos.getY() + random.nextInt(3) - 2;
+		int n = pos.getX() - MathHelper.ceil(g) - i;
+		int o = pos.getY() - 2 - i;
+		int p = pos.getZ() - MathHelper.ceil(g) - i;
+		int q = 2 * (MathHelper.ceil(g) + i);
+		int r = 2 * (2 + i);
+
+		for(int s = n; s <= n + q; ++s)
+		{
+			for(int t = p; t <= p + q; ++t)
+			{
+				if(o <= world.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, s, t))
+				{
+					return this.generateVeinPart(world, random, config, d, e, h, j, l, m, n, o, p, q, r);
+				}
+			}
+		}
+
+		return false;
 	}
 }

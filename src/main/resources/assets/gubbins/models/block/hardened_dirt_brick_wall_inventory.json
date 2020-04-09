@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "gubbins:block/hardened_dirt_brick"
+  }
+}

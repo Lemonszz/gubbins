@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "gubbins:block/hardened_dirt",
+    "top": "gubbins:block/hardened_dirt",
+    "side": "gubbins:block/hardened_dirt"
+  }
+}

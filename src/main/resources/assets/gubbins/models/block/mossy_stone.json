@@ -1,7 +1,6 @@
 {
-  "parent": "gubbins:block/cube_all_overlayed",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "block/stone",
-    "overlay": "gubbins:block/moss"
+    "all": "gubbins:block/mossy_stone"
   }
 }

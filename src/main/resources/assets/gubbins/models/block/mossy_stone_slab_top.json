@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "gubbins:block/mossy_stone",
+    "top": "gubbins:block/mossy_stone",
+    "side": "gubbins:block/mossy_stone"
+  }
+}

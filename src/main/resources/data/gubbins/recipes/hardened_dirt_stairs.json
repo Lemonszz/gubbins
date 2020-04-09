@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gubbins:hardened_dirt"
+    }
+  },
+  "result": {
+    "item": "gubbins:hardened_dirt_stairs",
+    "count": 4
+  }
+}

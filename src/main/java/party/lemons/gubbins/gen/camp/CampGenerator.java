@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkRandom;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import party.lemons.gubbins.gen.JigsawConfig;
 import party.lemons.gubbins.init.GubbinsStructurePieces;
@@ -34,12 +35,6 @@ public class CampGenerator
 
 		public Piece(StructureManager structureManager, CompoundTag compoundTag) {
 			super(structureManager, compoundTag, GubbinsStructurePieces.CAMPSITE);
-		}
-
-		@Override
-		public boolean generate(IWorld world, ChunkGenerator<?> generator, Random random, BlockBox box, ChunkPos pos, BlockPos blockPos)
-		{
-			return super.generate(world, generator, random, box, pos, blockPos);
 		}
 	}
 }

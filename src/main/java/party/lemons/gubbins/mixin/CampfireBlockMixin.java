@@ -29,7 +29,6 @@ public class CampfireBlockMixin extends Block
 	public CampfireBlockMixin()
 	{
 		super(null);
-		//NOFU
 	}
 
 	@Inject(at = @At("HEAD"), method = "onUse(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;", cancellable = true)
@@ -54,7 +53,7 @@ public class CampfireBlockMixin extends Block
 
 
 	@Inject(at = @At("TAIL"), method = "<init>")
-	public void onConstruct(AbstractBlock.Settings settings, CallbackInfo cbi)
+	public void onConstruct(boolean isSoul, AbstractBlock.Settings settings, CallbackInfo cbi)
 	{
 		setDefaultState(this.getDefaultState().with(BlockProperties.DYED, false));
 	}

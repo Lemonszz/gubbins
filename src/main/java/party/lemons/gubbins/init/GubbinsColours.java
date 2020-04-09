@@ -26,7 +26,22 @@ public class GubbinsColours
 			return 0xFFFFFF;
 		}), GubbinsItems.POTION_FLASK);
 
-		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex)->{
+		ColorProviderRegistry.BLOCK.register(new CampfireColour(60), Blocks.CAMPFIRE);
+		ColorProviderRegistry.BLOCK.register(new CampfireColour(120), Blocks.SOUL_CAMPFIRE);
+	}
+
+	private static class CampfireColour implements BlockColorProvider
+	{
+		private final int brightness;
+
+		public CampfireColour(int brightness)
+		{
+			this.brightness = brightness;
+		}
+
+		@Override
+		public int getColor(BlockState state, BlockRenderView world, BlockPos pos, int tintIndex)
+		{
 			if(tintIndex == 1 || tintIndex == 2)
 			{
 				BlockEntity te = world.getBlockEntity(pos);
@@ -38,12 +53,12 @@ public class GubbinsColours
 						if(tintIndex == 1)
 							return dyer.getColor().getMaterialColor().color;
 
-						return brighten(dyer.getColor().getMaterialColor().color, 60);
+						return brighten(dyer.getColor().getMaterialColor().color, brightness);
 					}
 				}
 			}
 			return 0xFFFFFF;
-		}, Blocks.CAMPFIRE);
+		}
 	}
 
 	public static int brighten(int color, int amt){

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gubbins:snow_bricks"
+  },
+  "result": "gubbins:snow_brick_wall",
+  "count": 1
+}

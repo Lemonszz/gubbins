@@ -16,8 +16,4 @@ public abstract class EnhancedDungeonStructureStart extends StructureStart
 		super(structureFeature, i, j, blockBox, k, l);
 	}
 
-	public void generateStructure(IWorld world, ChunkGenerator<?> chunkGenerator, Random random, BlockBox box, ChunkPos pos)
-	{
-		super.generateStructure(world, chunkGenerator, random, box, pos);
-	}
 }

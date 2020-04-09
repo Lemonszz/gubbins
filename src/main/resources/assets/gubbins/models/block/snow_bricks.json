@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gubbins:block/snow_bricks"
+    "all": "gubbins:block/snow_brick"
   }
 }

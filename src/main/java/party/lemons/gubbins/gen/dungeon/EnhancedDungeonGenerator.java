@@ -34,11 +34,5 @@ public class EnhancedDungeonGenerator
 		public Piece(StructureManager structureManager, CompoundTag compoundTag) {
 			super(structureManager, compoundTag, GubbinsStructurePieces.ENHANCED_DUNGEON);
 		}
-
-		@Override
-		public boolean generate(IWorld world, ChunkGenerator<?> generator, Random random, BlockBox box, ChunkPos pos, BlockPos blockPos)
-		{
-			return super.generate(world, generator, random, box, pos, blockPos);
-		}
 	}
 }

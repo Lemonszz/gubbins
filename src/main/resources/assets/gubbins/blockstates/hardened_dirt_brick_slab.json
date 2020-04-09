@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gubbins:block/hardened_dirt_brick_slab"
+    },
+    "type=double": {
+      "model": "gubbins:block/hardened_dirt_bricks"
+    },
+    "type=top": {
+      "model": "gubbins:block/hardened_dirt_brick_slab_top"
+    }
+  }
+}

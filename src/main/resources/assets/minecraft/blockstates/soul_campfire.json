@@ -1,0 +1,65 @@
+{
+  "variants": {
+    "facing=east,lit=false,dyed=false": {
+      "model": "minecraft:block/campfire_off",
+      "y": 270
+    },
+    "facing=east,lit=true,dyed=false": {
+      "model": "minecraft:block/soul_campfire",
+      "y": 270
+    },
+    "facing=north,lit=false,dyed=false": {
+      "model": "minecraft:block/campfire_off",
+      "y": 180
+    },
+    "facing=north,lit=true,dyed=false": {
+      "model": "minecraft:block/soul_campfire",
+      "y": 180
+    },
+    "facing=south,lit=false,dyed=false": {
+      "model": "minecraft:block/campfire_off"
+    },
+    "facing=south,lit=true,dyed=false": {
+      "model": "minecraft:block/soul_campfire"
+    },
+    "facing=west,lit=false,dyed=false": {
+      "model": "minecraft:block/campfire_off",
+      "y": 90
+    },
+    "facing=west,lit=true,dyed=false": {
+      "model": "minecraft:block/soul_campfire",
+      "y": 90
+    },
+
+    "facing=east,lit=false,dyed=true": {
+      "model": "minecraft:block/campfire_off",
+      "y": 270
+    },
+    "facing=east,lit=true,dyed=true": {
+      "model": "gubbins:block/soul_campfire_dyed",
+      "y": 270
+    },
+    "facing=north,lit=false,dyed=true": {
+      "model": "minecraft:block/campfire_off",
+      "y": 180
+    },
+    "facing=north,lit=true,dyed=true": {
+      "model": "gubbins:block/soul_campfire_dyed",
+      "y": 180
+    },
+    "facing=south,lit=false,dyed=true": {
+      "model": "minecraft:block/campfire_off"
+    },
+    "facing=south,lit=true,dyed=true": {
+      "model": "gubbins:block/soul_campfire_dyed"
+    },
+    "facing=west,lit=false,dyed=true": {
+      "model": "minecraft:block/campfire_off",
+      "y": 90
+    },
+    "facing=west,lit=true,dyed=true": {
+      "model": "gubbins:block/soul_campfire_dyed",
+      "y": 90
+    }
+  }
+}

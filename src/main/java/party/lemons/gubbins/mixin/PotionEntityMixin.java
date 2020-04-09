@@ -19,7 +19,7 @@ import java.util.List;
 @Mixin(PotionEntity.class)
 public class PotionEntityMixin
 {
-	@Inject(at = @At("RETURN"), method = "method_24920(Lnet/minecraft/util/hit/BlockHitResult;)V")
+	@Inject(at = @At("RETURN"), method = "onBlockHit(Lnet/minecraft/util/hit/BlockHitResult;)V")
 	public void onPotionBreak(BlockHitResult blockHitResult, CallbackInfo cbi)
 	{
 		PotionEntity self = (PotionEntity)(Object)this;

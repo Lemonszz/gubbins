@@ -2,13 +2,12 @@ package party.lemons.gubbins.item;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.advancement.criterion.Criterions;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.potion.Potion;
@@ -20,7 +19,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import party.lemons.gubbins.init.GubbinsItems;
 
@@ -39,7 +37,7 @@ public class PotionFlaskItem extends Item
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
 		PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
 		if (playerEntity instanceof ServerPlayerEntity) {
-			Criterions.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
+			Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
 		}
 
 		if (!world.isClient) {

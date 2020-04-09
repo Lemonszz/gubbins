@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gubbins:basalt_bricks"
+    }
+  },
+  "result": {
+    "item": "gubbins:basalt_brick_wall",
+    "count": 6
+  }
+}

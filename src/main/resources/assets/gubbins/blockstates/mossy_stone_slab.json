@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gubbins:block/mossy_stone_slab"
+    },
+    "type=double": {
+      "model": "gubbins:block/mossy_stone"
+    },
+    "type=top": {
+      "model": "gubbins:block/mossy_stone_slab_top"
+    }
+  }
+}

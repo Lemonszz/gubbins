@@ -5,6 +5,7 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -28,7 +29,7 @@ public class CaveBiomeFeature extends Feature<FeatureConfig>
 	}
 
 	@Override
-	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, FeatureConfig config)
+	public boolean generate(IWorld world, StructureAccessor accessor, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, FeatureConfig config)
 	{
 		CaveBiome biome = CaveBiomes.selectBiome(world, pos);
 		if(biome == null)
@@ -67,8 +68,7 @@ public class CaveBiomeFeature extends Feature<FeatureConfig>
 		if(biome.doFinalWallPass)
 			positions.sidePositions.forEach(p->biome.generateFinalWallPass(world, random, p));
 
-		return true;
-	}
+		return true;	}
 
 	public static class CavePositions
 	{

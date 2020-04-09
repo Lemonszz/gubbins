@@ -57,12 +57,6 @@ public class CampFeature extends StructureFeature<JigsawConfig>
 	}
 
 	@Override
-	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, JigsawConfig config)
-	{
-		return super.generate(world, generator, random, pos, config);
-	}
-
-	@Override
 	public StructureStartFactory getStructureStartFactory()
 	{
 		return CampFeature.Start::new;
