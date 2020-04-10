@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import party.lemons.gubbins.init.GubbinsItems;
@@ -32,5 +33,21 @@ public class EntityUtil
 	{
 		ItemStack activeStack = playerEntity.getActiveItem();
 		return !activeStack.isEmpty() && activeStack.getItem() == GubbinsItems.TELESCOPE;
+	}
+
+	public static int getSlotWithItemStack(PlayerEntity playerEntity, ItemStack stack)
+	{
+		DefaultedList<ItemStack> inv = playerEntity.inventory.main;
+		for(int i = 0; i < inv.size(); ++i) {
+			if (!inv.get(i).isEmpty() && areItemsEqual(stack, inv.get(i))) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public static boolean areItemsEqual(ItemStack stack1, ItemStack stack2)
+	{
+		return stack1.getItem() == stack2.getItem() && ItemStack.areTagsEqual(stack1, stack2);
 	}
 }

@@ -75,7 +75,6 @@ public class Gubbins implements ModInitializer
 		GubbinsNetwork.initCommon();
 		RegistryLoader.init();
 		GubbinsBlocks.initDecorations();
-		GubbinsColours.init();
 		GubbinsGeneration.init();
 		GubbinsLootTables.init();
 

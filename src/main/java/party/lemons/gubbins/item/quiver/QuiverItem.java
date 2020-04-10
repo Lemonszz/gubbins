@@ -12,6 +12,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.init.GubbinsItems;
+import party.lemons.gubbins.util.EntityUtil;
 
 public class QuiverItem extends Item
 {
@@ -26,7 +27,7 @@ public class QuiverItem extends Item
 		if(!world.isClient())
 		{
 			ItemStack stack = user.getStackInHand(hand);
-			int slot = user.inventory.getSlotWithStack(stack);
+			int slot = EntityUtil.getSlotWithItemStack(user, stack);
 			ContainerProviderRegistry.INSTANCE.openContainer(Gubbins.QUIVER, user, buf->buf.writeInt(slot));
 
 		}

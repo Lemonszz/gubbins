@@ -18,32 +18,4 @@ public class GubbinsNetwork
 	public static void initCommon(){
 
 	}
-
-	//TODO: make this not shit
-	public static void initClient(){
-		ClientSidePacketRegistry.INSTANCE.register(SPAWN_ENTITY_CUSTOM, (ctx, data)->{
-			EntityType<?> type = Registry.ENTITY_TYPE.get(data.readVarInt());
-			UUID entityUUID = data.readUuid();
-			int entityID = data.readVarInt();
-			double x = data.readDouble();
-			double y = data.readDouble();
-			double z = data.readDouble();
-			float pitch = (data.readByte() * 360) / 256.0F;
-			float yaw = (data.readByte() * 360) / 256.0F;
-
-			ctx.getTaskQueue().execute(() -> {
-				ClientWorld world = MinecraftClient.getInstance().world;
-				Entity entity = type.create(world);
-				if(entity != null) {
-					entity.updatePosition(x, y, z);
-					entity.updateTrackedPosition(x, y, z);
-					entity.pitch = pitch;
-					entity.yaw = yaw;
-					entity.setEntityId(entityID);
-					entity.setUuid(entityUUID);
-					world.addEntity(entityID, entity);
-				}
-			});
-		});
-	}
 }

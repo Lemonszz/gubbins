@@ -24,32 +24,39 @@ public class RegistryLoader
 			ClassPath path = ClassPath.from(RegistryLoader.class.getClassLoader());
 			for(ClassPath.ClassInfo info : path.getTopLevelClassesRecursive("party.lemons"))
 			{
-				Class c = Class.forName(info.getName());
-				Annotation reg = c.getDeclaredAnnotation(AutoReg.class);
-				if(reg != null)
+				try
 				{
-					AutoReg i = (AutoReg) reg;
-					Registry registry = Registry.REGISTRIES.get(new Identifier(i.registry()));
-
-					for(Field f : c.getDeclaredFields())
+					Class c = Class.forName(info.getName());
+					Annotation reg = c.getDeclaredAnnotation(AutoReg.class);
+					if(reg != null)
 					{
-						if(Modifier.isStatic(f.getModifiers()) && i.type().isAssignableFrom(f.getType()))
-						{
-							String regName = f.getName().toLowerCase(Locale.ENGLISH);
-							Registry.register(registry, new Identifier(Gubbins.MODID, regName), f.get(c));
+						AutoReg i = (AutoReg) reg;
+						Registry registry = Registry.REGISTRIES.get(new Identifier(i.registry()));
 
-							//Block Special Case, create item if need be
-							if(i.registry().equalsIgnoreCase("block"))
+						for(Field f : c.getDeclaredFields())
+						{
+							if(Modifier.isStatic(f.getModifiers()) && i.type().isAssignableFrom(f.getType()))
 							{
-								Block bl = (Block) f.get(c);
-								if(bl instanceof BlockWithItem && ((BlockWithItem) bl).hasItem())
+								String regName = f.getName().toLowerCase(Locale.ENGLISH);
+								Registry.register(registry, new Identifier(Gubbins.MODID, regName), f.get(c));
+
+								//Block Special Case, create item if need be
+								if(i.registry().equalsIgnoreCase("block"))
 								{
-									BlockItem bi = new BlockItem(bl, ((BlockWithItem) bl).makeItemSettings());
-									Registry.register(Registry.ITEM, new Identifier(Gubbins.MODID, regName), bi);
+									Block bl = (Block) f.get(c);
+									if(bl instanceof BlockWithItem && ((BlockWithItem) bl).hasItem())
+									{
+										BlockItem bi = new BlockItem(bl, ((BlockWithItem) bl).makeItemSettings());
+										Registry.register(Registry.ITEM, new Identifier(Gubbins.MODID, regName), bi);
+									}
 								}
 							}
 						}
+
 					}
+				}
+				catch(RuntimeException e)   // lol
+				{
 
 				}
 			}

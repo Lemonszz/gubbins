@@ -7,9 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableText;
 import party.lemons.gubbins.entity.render.NewBoatRenderer;
 import party.lemons.gubbins.entity.render.PrismarineArrowRender;
-import party.lemons.gubbins.init.GubbinsEntities;
-import party.lemons.gubbins.init.GubbinsNetwork;
-import party.lemons.gubbins.init.GubbinsParticles;
+import party.lemons.gubbins.init.*;
 import party.lemons.gubbins.item.quiver.QuiverScreen;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
 
@@ -19,7 +17,8 @@ public class GubbinsClient implements ClientModInitializer
 	@Override
 	public void onInitializeClient()
 	{
-		GubbinsNetwork.initClient();
+		GubbinsNetworkClient.initClient();
+		GubbinsColours.init();
 		GubbinsParticles.clientInit();
 
 		ScreenProviderRegistry.INSTANCE.<QuiverScreenHandler>registerFactory(Gubbins.QUIVER, (container) -> new QuiverScreen(container, MinecraftClient.getInstance().player.inventory, new TranslatableText("container.gubbins.quiver")));
