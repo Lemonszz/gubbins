@@ -18,6 +18,10 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import party.lemons.gubbins.adornment.Adornment;
+import party.lemons.gubbins.adornment.Adornments;
+import party.lemons.gubbins.boat.BoatTypes;
+import party.lemons.gubbins.cave.CaveBiomes;
 import party.lemons.gubbins.command.BetterLocateCommand;
 import party.lemons.gubbins.init.*;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
@@ -73,7 +77,27 @@ public class Gubbins implements ModInitializer
 	public void onInitialize()
 	{
 		GubbinsNetwork.initCommon();
-		RegistryLoader.init();
+		//RegistryLoader.init();
+
+		//Statically init classes lol
+		CaveBiomes.REGISTRY.isEmpty();
+		BoatTypes.REGISTRY.isEmpty();
+		Adornments.REGISTRY.isEmpty();
+
+		RegistryLoader.register(GubbinsBlocks.class);
+		RegistryLoader.register(GubbinsItems.class);
+		RegistryLoader.register(GubbinsRecipes.class);
+		RegistryLoader.register(CaveBiomes.class);
+		RegistryLoader.register(GubbinsParticles.class);
+		RegistryLoader.register(GubbinsCarvers.class);
+		RegistryLoader.register(GubbinsEntities.class);
+		RegistryLoader.register(GubbinsFeatures.class);
+		RegistryLoader.register(GubbinsStructurePieces.class);
+		RegistryLoader.register(GubbinsStructures.class);
+		RegistryLoader.register(Adornments.class);
+		RegistryLoader.register(BoatTypes.class);
+
+
 		GubbinsBlocks.initDecorations();
 		GubbinsGeneration.init();
 		GubbinsLootTables.init();

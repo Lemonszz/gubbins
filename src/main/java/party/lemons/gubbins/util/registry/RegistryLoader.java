@@ -17,6 +17,44 @@ import java.util.Locale;
 
 public class RegistryLoader
 {
+	public static void register(Class c)
+	{
+		Annotation reg = c.getDeclaredAnnotation(AutoReg.class);
+		if(reg != null)
+		{
+			AutoReg i = (AutoReg) reg;
+			Registry registry = Registry.REGISTRIES.get(new Identifier(i.registry()));
+
+			try
+			{
+				for(Field f : c.getDeclaredFields())
+				{
+					if(Modifier.isStatic(f.getModifiers()) && i.type().isAssignableFrom(f.getType()))
+					{
+						String regName = f.getName().toLowerCase(Locale.ENGLISH);
+						Registry.register(registry, new Identifier(Gubbins.MODID, regName), f.get(c));
+
+						//Block Special Case, create item if need be
+						if(i.registry().equalsIgnoreCase("block"))
+						{
+							Block bl = (Block) f.get(c);
+							if(bl instanceof BlockWithItem && ((BlockWithItem) bl).hasItem())
+							{
+								BlockItem bi = new BlockItem(bl, ((BlockWithItem) bl).makeItemSettings());
+								Registry.register(Registry.ITEM, new Identifier(Gubbins.MODID, regName), bi);
+							}
+						}
+					}
+				}
+			}
+			catch(Exception e)
+			{
+				//if crash == true; dont()
+			}
+		}
+	}
+
+	//TODO make this work in prod
 	public static void init()
 	{
 		try
