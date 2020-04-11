@@ -36,13 +36,13 @@ public class ItemNewBoat extends Item
 			return TypedActionResult.pass(itemStack);
 		} else {
 			Vec3d vec3d = user.getRotationVec(1.0F);
-			List<Entity> list = world.getEntities((Entity)user, user.getBoundingBox().stretch(vec3d.multiply(5.0D)).expand(1.0D), EntityPredicates.EXCEPT_SPECTATOR.and(Entity::collides));
+			List<Entity> list = world.getEntities(user, user.getBoundingBox().stretch(vec3d.multiply(5.0D)).expand(1.0D), EntityPredicates.EXCEPT_SPECTATOR.and(Entity::collides));
 			if (!list.isEmpty()) {
 				Vec3d cameraPosVec = user.getCameraPosVec(1.0F);
 
 				for(Entity entity : list)
 				{
-					Box box = entity.getBoundingBox().expand((double) entity.getTargetingMargin());
+					Box box = entity.getBoundingBox().expand(entity.getTargetingMargin());
 					if(box.contains(cameraPosVec))
 					{
 						return TypedActionResult.pass(itemStack);

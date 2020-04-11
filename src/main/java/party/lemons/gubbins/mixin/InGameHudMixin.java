@@ -46,7 +46,7 @@ public class InGameHudMixin
 
 			double xPos = (scaledWidth / 2d) - (width / 2d);
 
-			bufferBuilder.vertex(xPos, (double)this.scaledHeight, -90.0D).texture(0.0F, 1.0F).next();
+			bufferBuilder.vertex(xPos, this.scaledHeight, -90.0D).texture(0.0F, 1.0F).next();
 			bufferBuilder.vertex(xPos + width, this.scaledHeight, -90.0D).texture(1.0F, 1.0F).next();
 			bufferBuilder.vertex(xPos + width, 0.0D, -90.0D).texture(1.0F, 0.0F).next();
 			bufferBuilder.vertex(xPos, 0.0D, -90.0D).texture(0.0F, 0.0F).next();

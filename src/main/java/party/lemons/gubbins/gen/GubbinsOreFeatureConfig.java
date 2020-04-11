@@ -27,7 +27,7 @@ public class GubbinsOreFeatureConfig implements FeatureConfig
 
 	public static GubbinsOreFeatureConfig deserialize(Dynamic<?> dynamic) {
 		int i = dynamic.get("size").asInt(0);
-		BlockState blockState = (BlockState)dynamic.get("state").map(BlockState::deserialize).orElse(Blocks.AIR.getDefaultState());
+		BlockState blockState = dynamic.get("state").map(BlockState::deserialize).orElse(Blocks.AIR.getDefaultState());
 		return new GubbinsOreFeatureConfig(b->b.getBlock() == Blocks.STONE, blockState, i);
 	}
 }

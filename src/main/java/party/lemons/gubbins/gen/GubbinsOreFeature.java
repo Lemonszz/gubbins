@@ -36,9 +36,9 @@ public class GubbinsOreFeature extends Feature<GubbinsOreFeatureConfig>
 		for(m = 0; m < config.size; ++m)
 		{
 			float f = (float) m / (float) config.size;
-			o = MathHelper.lerp((double) f, startX, endX);
-			p = MathHelper.lerp((double) f, startY, endY);
-			q = MathHelper.lerp((double) f, startZ, endZ);
+			o = MathHelper.lerp(f, startX, endX);
+			p = MathHelper.lerp(f, startY, endY);
+			q = MathHelper.lerp(f, startZ, endZ);
 			r = random.nextDouble() * (double) config.size / 16.0D;
 			double l = ((double) (MathHelper.sin(3.1415927F * f) + 1.0F) * r + 1.0D) / 2.0D;
 			ds[m * 4 + 0] = o;

@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.misc.BlockProperties;
 import party.lemons.gubbins.misc.CampfireDye;
 
@@ -34,19 +35,22 @@ public class CampfireBlockMixin extends Block
 	@Inject(at = @At("HEAD"), method = "onUse(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;", cancellable = true)
 	public void onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cbi)
 	{
-		ItemStack stack = player.getStackInHand(hand);
-		if(!stack.isEmpty() && stack.getItem() instanceof DyeItem)
+		if(Gubbins.config.MISC.enableCampfireDye)
 		{
-			BlockEntity be = world.getBlockEntity(pos);
-			if(be != null && be instanceof CampfireBlockEntity)
+			ItemStack stack = player.getStackInHand(hand);
+			if(!stack.isEmpty() && stack.getItem() instanceof DyeItem)
 			{
-				CampfireDye campfire = (CampfireDye) be;
-				DyeItem item = (DyeItem) stack.getItem();
-				campfire.setColor(item.getColor());
+				BlockEntity be = world.getBlockEntity(pos);
+				if(be != null && be instanceof CampfireBlockEntity)
+				{
+					CampfireDye campfire = (CampfireDye) be;
+					DyeItem item = (DyeItem) stack.getItem();
+					campfire.setColor(item.getColor());
 
-				world.setBlockState(pos, state.with(BlockProperties.DYED, true));
-				stack.decrement(1);
-				cbi.setReturnValue(ActionResult.SUCCESS);
+					world.setBlockState(pos, state.with(BlockProperties.DYED, true));
+					stack.decrement(1);
+					cbi.setReturnValue(ActionResult.SUCCESS);
+				}
 			}
 		}
 	}

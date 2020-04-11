@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import party.lemons.gubbins.Gubbins;
+import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.misc.WaterPotionConcrete;
 
 import java.util.List;
@@ -22,15 +24,17 @@ public class PotionEntityMixin
 	@Inject(at = @At("RETURN"), method = "onBlockHit(Lnet/minecraft/util/hit/BlockHitResult;)V")
 	public void onPotionBreak(BlockHitResult blockHitResult, CallbackInfo cbi)
 	{
-		PotionEntity self = (PotionEntity)(Object)this;
-		ItemStack itemStack = self.getStack();
-		Potion potion = PotionUtil.getPotion(itemStack);
-		List<StatusEffectInstance> list = PotionUtil.getPotionEffects(itemStack);
-		boolean isWater = potion == Potions.WATER && list.isEmpty();
+		if(Gubbins.config.MISC.enableWaterBottleConcrete)
+		{
+			PotionEntity self = (PotionEntity) (Object) this;
+			ItemStack itemStack = self.getStack();
+			Potion potion = PotionUtil.getPotion(itemStack);
+			List<StatusEffectInstance> list = PotionUtil.getPotionEffects(itemStack);
+			boolean isWater = potion == Potions.WATER && list.isEmpty();
 
-		PlayerEntity player = self.getOwner() instanceof PlayerEntity ? (PlayerEntity)self.getOwner() : null;
+			PlayerEntity player = self.getOwner() instanceof PlayerEntity ? (PlayerEntity) self.getOwner() : null;
 
-		if(isWater)
-			WaterPotionConcrete.convert(self.world, player, blockHitResult);
+			if(isWater) WaterPotionConcrete.convert(self.world, player, blockHitResult);
+		}
 	}
 }

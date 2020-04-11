@@ -13,4 +13,9 @@ public class BoatType
 		this.id = id;
 		this.item = item;
 	}
+
+	public Identifier getTexture()
+	{
+		return new Identifier(id.getNamespace(), "textures/entity/boat/" + id.getPath() + ".png");
+	}
 }

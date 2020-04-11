@@ -66,7 +66,7 @@ public class NewBoatRenderer extends EntityRenderer<NewBoatEntity>
 			return textures.get(type);
 		else
 		{
-			Identifier texture = new Identifier(type.id.getNamespace(), "textures/entity/boat/" + type.id.getPath() + ".png");
+			Identifier texture = type.getTexture();
 			textures.put(type, texture);
 
 			return texture;

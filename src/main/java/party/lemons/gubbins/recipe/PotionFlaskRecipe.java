@@ -13,6 +13,7 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.init.GubbinsItems;
 import party.lemons.gubbins.init.GubbinsRecipes;
 
@@ -87,7 +88,7 @@ public class PotionFlaskRecipe extends SpecialCraftingRecipe
 		PotionUtil.setPotion(stack, out.potion);
 
 		int totalDoses = GubbinsItems.POTION_FLASK.getUsages(stack) + out.count;
-		if(totalDoses > 16)
+		if(totalDoses > Gubbins.config.POTION_FLASK.maxSize)
 			return ItemStack.EMPTY;
 
 		GubbinsItems.POTION_FLASK.setUsages(stack, totalDoses);

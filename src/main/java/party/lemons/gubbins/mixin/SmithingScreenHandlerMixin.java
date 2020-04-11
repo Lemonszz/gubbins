@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.adornment.Adornment;
 import party.lemons.gubbins.adornment.Adornments;
 
@@ -31,19 +32,20 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler
 	@Inject(at = @At("RETURN"), method = "canTakeOutput(Lnet/minecraft/entity/player/PlayerEntity;Z)Z", cancellable = true)
 	protected void canTakeOutput(PlayerEntity player, boolean present, CallbackInfoReturnable<Boolean> cbi)
 	{
-		ItemStack armourStack = this.input.getStack(0);
-		ItemStack materialStack = this.input.getStack(1);
-		Adornment adornment = Adornments.REGISTRY.getForMaterial(materialStack.getItem());
-		if(adornment != null && !armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
+		if(Gubbins.config.ADORNMENTS.enabled)
 		{
-			ArmorItem armorItem = (ArmorItem) armourStack.getItem();
-			if(armorItem.getMaterial().getRepairIngredient().test(materialStack))
-				return;
+			ItemStack armourStack = this.input.getStack(0);
+			ItemStack materialStack = this.input.getStack(1);
+			Adornment adornment = Adornments.REGISTRY.getForMaterial(materialStack.getItem());
+			if(adornment != null && !armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
+			{
+				ArmorItem armorItem = (ArmorItem) armourStack.getItem();
+				if(armorItem.getMaterial().getRepairIngredient().test(materialStack)) return;
 
-			if(armourStack.hasTag() && armourStack.getTag().contains("_adornment"))
-				return;
+				if(armourStack.hasTag() && armourStack.getTag().contains("_adornment")) return;
 
-			cbi.setReturnValue(true);
+				cbi.setReturnValue(true);
+			}
 		}
 	}
 

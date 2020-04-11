@@ -53,7 +53,7 @@ public class CampFeature extends StructureFeature<JigsawConfig>
 	public boolean shouldStartAt(BiomeAccess biomeAccess, ChunkGenerator<?> chunkGenerator, Random random, int chunkX, int chunkZ, Biome biome)
 	{
 		ChunkPos chunkPos = this.getStart(chunkGenerator, random, chunkX, chunkZ, 0, 0);
-		return chunkX == chunkPos.x && chunkZ == chunkPos.z ? chunkGenerator.hasStructure(biome, this) : false;
+		return (chunkX == chunkPos.x && chunkZ == chunkPos.z) && chunkGenerator.hasStructure(biome, this);
 	}
 
 	@Override

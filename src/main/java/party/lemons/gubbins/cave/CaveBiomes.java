@@ -20,13 +20,13 @@ public class CaveBiomes
 		Registry.REGISTRIES.add(new Identifier(Gubbins.MODID, "cave_biomes"), REGISTRY);
 	}
 
-	public static final CaveBiome SANDSTONE = new SandstoneCaveBiome(10);
-	public static final CaveBiome MOSSY = new MossyCaveBiome(10);
-	public static final CaveBiome GRASS = new GrassCaveBiome(10);
-	public static final CaveBiome SPIDER = new SpiderCaveBiome(10);
-	public static final CaveBiome HARD_DIRT = new HardenedDirtCaveBiome(10);
-	public static final CaveBiome PRISMARINE = new PrismarineCaveBiome(10);
-	public static final CaveBiome MUSHROOM = new MushroomCaveBiome(3);
+	public static final CaveBiome SANDSTONE = new SandstoneCaveBiome(Gubbins.config.CAVE_BIOMES.SANDSTONE.weight);
+	public static final CaveBiome MOSSY = new MossyCaveBiome(Gubbins.config.CAVE_BIOMES.MOSSY.weight);
+	public static final CaveBiome GRASS = new GrassCaveBiome(Gubbins.config.CAVE_BIOMES.GRASS.weight);
+	public static final CaveBiome SPIDER = new SpiderCaveBiome(Gubbins.config.CAVE_BIOMES.SPIDER.weight);
+	public static final CaveBiome HARD_DIRT = new HardenedDirtCaveBiome(Gubbins.config.CAVE_BIOMES.HARD_DIRT.weight);
+	public static final CaveBiome PRISMARINE = new PrismarineCaveBiome(Gubbins.config.CAVE_BIOMES.PRISMARINE.weight);
+	public static final CaveBiome MUSHROOM = new MushroomCaveBiome(Gubbins.config.CAVE_BIOMES.MUSHROOM.weight);
 
 	public static CaveBiome selectBiome(IWorld world, BlockPos pos)
 	{

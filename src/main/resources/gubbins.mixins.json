@@ -14,7 +14,9 @@
     "ChunkGeneratorMixin",
     "FeatureMixin",
     "StructurePlacementDataMixin",
-    "BiomeMixin"
+    "BiomeMixin",
+    "SilkTouchEnchantmentMixin",
+    "DragonEggBlockMixin"
   ],
   "client": [
     "ItemRendererMixin",

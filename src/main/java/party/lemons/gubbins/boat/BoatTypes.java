@@ -1,6 +1,6 @@
 package party.lemons.gubbins.boat;
 
-import net.minecraft.block.Blocks;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
@@ -19,4 +19,12 @@ public class BoatTypes
 
 	public static final BoatType CRIMSON = new BoatType(new Identifier(Gubbins.MODID, "crimson"), GubbinsItems.CRIMSON_BOAT);
 	public static final BoatType WARPED = new BoatType(new Identifier(Gubbins.MODID, "warped"), GubbinsItems.WARPED_BOAT);
+
+	//Vanilla Types
+	public static final BoatType ACACIA = new VanillaBoatType(new Identifier(Gubbins.MODID, "acacia"), BoatEntity.Type.ACACIA);
+	public static final BoatType BIRCH = new VanillaBoatType(new Identifier(Gubbins.MODID, "birch"), BoatEntity.Type.BIRCH);
+	public static final BoatType DARK_OAK = new VanillaBoatType(new Identifier(Gubbins.MODID, "dark_oak"), BoatEntity.Type.DARK_OAK);
+	public static final BoatType JUNGLE = new VanillaBoatType(new Identifier(Gubbins.MODID, "jungle"), BoatEntity.Type.JUNGLE);
+	public static final BoatType OAK = new VanillaBoatType(new Identifier(Gubbins.MODID, "oak"), BoatEntity.Type.OAK);
+	public static final BoatType SPRUCE = new VanillaBoatType(new Identifier(Gubbins.MODID, "spruce"), BoatEntity.Type.SPRUCE);
 }

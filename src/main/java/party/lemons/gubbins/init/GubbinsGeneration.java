@@ -50,29 +50,40 @@ public class GubbinsGeneration
 		gatherBiomeFromCategory(Biome.Category.ICY, ICY);
 		ICY.add(Biomes.SNOWY_TAIGA);
 
-		AMETHYST_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.END_STONE, GubbinsBlocks.AMETHYST_ORE.getDefaultState(), 2)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(4, 0, 0, 50)))));
-		GARNET_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.NETHERRACK, GubbinsBlocks.GARNET_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(6, 0, 0, 128)))));
-		ONYX_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE.getCondition(), GubbinsBlocks.ONYX_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 40)))));
+		if(Gubbins.config.ORE.enableAmethyst)
+			AMETHYST_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.END_STONE, GubbinsBlocks.AMETHYST_ORE.getDefaultState(), 2)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(4, 0, 0, 50)))));
+		if(Gubbins.config.ORE.enableGarnet)
+			GARNET_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.NETHERRACK, GubbinsBlocks.GARNET_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(6, 0, 0, 128)))));
+		if(Gubbins.config.ORE.enableOnyx)
+			ONYX_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE.getCondition(), GubbinsBlocks.ONYX_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 40)))));
 
-		ICY.forEach(b->{
-			((BiomeAccessor)b).clearCarvers();
-			b.addCarver(GenerationStep.Carver.AIR, Biome.configureCarver(GubbinsCarvers.ICE_CAVE, new ProbabilityConfig(0.14285715F)));
-			b.addCarver(GenerationStep.Carver.AIR, Biome.configureCarver(GubbinsCarvers.ICE_RAVINE, new ProbabilityConfig(0.02F)));
+		if(Gubbins.config.ICE_CAVES.enabled)
+		{
+			ICY.forEach(b->
+			{
+				((BiomeAccessor) b).clearCarvers();
+				b.addCarver(GenerationStep.Carver.AIR, Biome.configureCarver(GubbinsCarvers.ICE_CAVE, new ProbabilityConfig(0.14285715F)));
+				b.addCarver(GenerationStep.Carver.AIR, Biome.configureCarver(GubbinsCarvers.ICE_RAVINE, new ProbabilityConfig(0.02F)));
 
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.COAL_ICE_ORE.getDefaultState(), 17)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 0, 0, 128))));
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.IRON_ICE_ORE.getDefaultState(), 9)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 0, 0, 64))));
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.GOLD_ICE_ORE.getDefaultState(), 9)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 32))));
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.REDSTONE_ICE_ORE.getDefaultState(), 8)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 0, 16))));
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.DIAMOND_ICE_ORE.getDefaultState(), 8)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 0, 0, 16))));
-		});
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.COAL_ICE_ORE.getDefaultState(), 17)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 0, 0, 128))));
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.IRON_ICE_ORE.getDefaultState(), 9)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 0, 0, 64))));
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.GOLD_ICE_ORE.getDefaultState(), 9)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 32))));
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.REDSTONE_ICE_ORE.getDefaultState(), 8)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 0, 16))));
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bs->(bs.getBlock() == Blocks.ICE || bs.getBlock() == Blocks.PACKED_ICE), GubbinsBlocks.DIAMOND_ICE_ORE.getDefaultState(), 8)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 0, 0, 16))));
+			});
+		}
 
-		Biomes.SNOWY_TUNDRA.addStructureFeature(Feature.WOODLAND_MANSION.configure(FeatureConfig.DEFAULT));
+		if(Gubbins.config.MISC.enableMansionInSnowTundra)
+			Biomes.SNOWY_TUNDRA.addStructureFeature(Feature.WOODLAND_MANSION.configure(FeatureConfig.DEFAULT));
 
 		//Cave Biomes
-		Registry.BIOME.forEach(b->
+		if(Gubbins.config.CAVE_BIOMES.enabled)
 		{
-			b.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, GubbinsFeatures.CAVE_BIOME.configure(FeatureConfig.DEFAULT).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(10))));
-		});
+			Registry.BIOME.forEach(b->
+			{
+				b.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, GubbinsFeatures.CAVE_BIOME.configure(FeatureConfig.DEFAULT).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(10))));
+			});
+		}
 
 		//TODO: make these work properly
 	/*	CAMP.forEach(b->{

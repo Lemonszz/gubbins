@@ -47,7 +47,7 @@
   "item.gubbins.display_item_leggings": "",
   "item.gubbins.display_item_helmet": "",
   "item.gubbins.display_item_feet": "",
-  "gubbins.potion_flask_doses": "Doses: %d/16",
+  "gubbins.potion_flask_doses": "Doses: %d/%d",
   "container.gubbins.quiver": "Quiver",
   "entity.gubbins.new_boat": "Boat",
   "entity.gubbins.prismarine_arrow": "Prismarine Arrow",

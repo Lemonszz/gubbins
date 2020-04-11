@@ -20,6 +20,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+import party.lemons.gubbins.Gubbins;
+import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.init.GubbinsItems;
 
 import java.util.Iterator;
@@ -122,7 +124,7 @@ public class PotionFlaskItem extends Item
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		if(getUsages(stack) > 0)
 		{
-			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack)).setStyle(new Style().setColor(Formatting.DARK_PURPLE)));
+			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack), Gubbins.config.POTION_FLASK.maxSize).setStyle(new Style().setColor(Formatting.DARK_PURPLE)));
 		}
 
 		PotionUtil.buildTooltip(stack, tooltip, 1.0F);
