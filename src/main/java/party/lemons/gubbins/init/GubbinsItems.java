@@ -23,6 +23,7 @@ public class GubbinsItems
 	public static final Item TELESCOPE = new TelescopeItem(settings().maxDamage(600));
 
 	public static final Item WARPED_POD_SEEDS = new WarpedPodSeedsItem(GubbinsBlocks.WARPED_POD, settings());
+	public static final Item WARPED_FRUIT = new WarpedFruitItem(settings().food(GubbinsFoodComponents.WARPED_FRUIT));
 
 	public static final Item CRIMSON_BOAT = new ItemNewBoat(()->BoatTypes.CRIMSON, settings().maxCount(1));
 	public static final Item WARPED_BOAT = new ItemNewBoat(()->BoatTypes.WARPED, settings().maxCount(1));

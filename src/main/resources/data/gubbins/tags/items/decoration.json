@@ -29,6 +29,9 @@
     "gubbins:polished_basalt_brick_slab",
     "gubbins:flint_shingle_wall",
     "gubbins:flint_shingle_stairs",
-    "gubbins:flint_shingle_slab"
+    "gubbins:flint_shingle_slab",
+    "gubbins:amethyst_block",
+    "gubbins:garnet_block",
+    "gubbins:onyx_block"
   ]
 }
