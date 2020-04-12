@@ -27,46 +27,16 @@ public class Gubbins implements ModInitializer
 	public static final Identifier QUIVER = new Identifier(MODID, "quiver");
 
 	private static final Identifier tabID = new Identifier(MODID, MODID);
-	public static final ItemGroup GROUP;
+	public static ItemGroup GROUP;
 
 	public static GubbinsConfig config;
-
-	static
-	{
-		((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
-		GROUP = new GubbinsItemGroup(new Identifier(Gubbins.MODID, Gubbins.MODID));
-		/*GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", tabID.getNamespace(), tabID.getPath())) {
-			@Override
-			public ItemStack createIcon() {
-				return new ItemStack(GubbinsItems.AMETHYST);
-			}
-
-			@Override
-			public void appendStacks(DefaultedList<ItemStack> stacks) {
-				super.appendStacks(stacks);
-
-				stacks.sort((o1, o2)->
-				{
-					boolean isBlock1 = o1.getItem() instanceof BlockItem;
-					boolean isBlock2 = o2.getItem() instanceof BlockItem;
-					if(isBlock1 == isBlock2)
-					{
-						return o1.getName().asString().compareTo(o2.getName().asString());
-					}else if(isBlock1)
-					{
-						return 1;
-					}else
-					{
-						return -1;
-					}
-				});
-			}
-		};*/
-	}
 
 	@Override
 	public void onInitialize()
 	{
+		((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
+		GROUP = new GubbinsItemGroup(new Identifier(Gubbins.MODID, Gubbins.MODID));
+
 		config = GubbinsConfig.load();
 		GubbinsConfig.write(config);
 

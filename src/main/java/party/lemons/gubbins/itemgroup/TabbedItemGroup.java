@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class TabbedItemGroup extends ItemGroup
 {
-	private int selectedTab = 1;
+	private int selectedTab = 0;
 	private List<ItemTab> tabs = Lists.newArrayList();
 	private boolean hasInitialized = false;
 
