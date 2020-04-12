@@ -1,6 +1,5 @@
 package party.lemons.gubbins.cave;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -11,7 +10,6 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import party.lemons.gubbins.gen.cavebiome.CaveBiomeFeature;
 import party.lemons.gubbins.util.GubbinsConstants;
 
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 

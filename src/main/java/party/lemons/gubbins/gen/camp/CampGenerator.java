@@ -9,16 +9,12 @@ import net.minecraft.structure.pool.StructurePoolElement;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkRandom;
-import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import party.lemons.gubbins.gen.JigsawConfig;
 import party.lemons.gubbins.init.GubbinsStructurePieces;
 
 import java.util.List;
-import java.util.Random;
 
 public class CampGenerator
 {

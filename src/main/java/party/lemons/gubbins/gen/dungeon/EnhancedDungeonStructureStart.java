@@ -2,12 +2,7 @@ package party.lemons.gubbins.gen.dungeon;
 
 import net.minecraft.structure.StructureStart;
 import net.minecraft.util.math.BlockBox;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.StructureFeature;
-
-import java.util.Random;
 
 public abstract class EnhancedDungeonStructureStart extends StructureStart
 {

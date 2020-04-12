@@ -4,13 +4,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.BasicInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ArrowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.tag.ItemTags;
+import party.lemons.gubbins.init.GubbinsItems;
 
 public class QuiverScreenHandler extends ScreenHandler
 {
@@ -112,7 +111,7 @@ public class QuiverScreenHandler extends ScreenHandler
 
 		public boolean canInsert(ItemStack stack)
 		{
-			return !stack.isEmpty() && (stack.getItem() == Items.ARROW || stack.getItem() == Items.TIPPED_ARROW);
+			return !stack.isEmpty() && (stack.getItem() == Items.ARROW || stack.getItem() == Items.TIPPED_ARROW || stack.getItem() == GubbinsItems.PRISMARINE_ARROW);
 		}
 	}
 }

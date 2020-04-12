@@ -21,7 +21,6 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import party.lemons.gubbins.Gubbins;
-import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.init.GubbinsItems;
 
 import java.util.Iterator;

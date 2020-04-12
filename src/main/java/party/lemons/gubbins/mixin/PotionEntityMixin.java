@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import party.lemons.gubbins.Gubbins;
-import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.misc.WaterPotionConcrete;
 
 import java.util.List;

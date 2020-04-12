@@ -1,6 +1,5 @@
 package party.lemons.gubbins.gen;
 
-import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Heightmap;

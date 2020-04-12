@@ -2,12 +2,10 @@ package party.lemons.gubbins.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import party.lemons.gubbins.init.GubbinsItems;
 import party.lemons.gubbins.util.EntityUtil;
 
 @Mixin(Mouse.class)

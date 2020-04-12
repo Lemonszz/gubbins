@@ -1,22 +1,20 @@
 package party.lemons.gubbins.gen.dungeon;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.structure.*;
+import net.minecraft.structure.PoolStructurePiece;
+import net.minecraft.structure.StructureManager;
+import net.minecraft.structure.StructurePiece;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
 import net.minecraft.structure.pool.StructurePoolElement;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
-
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import party.lemons.gubbins.gen.JigsawConfig;
 import party.lemons.gubbins.init.GubbinsStructurePieces;
 
 import java.util.List;
-import java.util.Random;
 
 public class EnhancedDungeonGenerator
 {

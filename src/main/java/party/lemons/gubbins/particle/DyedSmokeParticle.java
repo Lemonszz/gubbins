@@ -3,7 +3,6 @@ package party.lemons.gubbins.particle;
 import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteBillboardParticle;
 import net.minecraft.world.World;
-import party.lemons.gubbins.particle.DyedSmokeEffect;
 
 public class DyedSmokeParticle extends SpriteBillboardParticle
 {

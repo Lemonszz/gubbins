@@ -3,7 +3,6 @@ package party.lemons.gubbins.util.registry;
 import com.google.common.reflect.ClassPath;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.spongepowered.asm.mixin.transformer.throwables.IllegalClassLoadError;

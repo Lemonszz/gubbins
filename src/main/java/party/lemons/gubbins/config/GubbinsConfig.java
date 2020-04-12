@@ -1,6 +1,5 @@
 package party.lemons.gubbins.config;
 
-
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import party.lemons.gubbins.util.serialization.GsonUtil;

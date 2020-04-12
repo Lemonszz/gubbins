@@ -2,13 +2,12 @@ package party.lemons.gubbins.init;
 
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
+import party.lemons.gubbins.gen.GubbinsOreFeature;
+import party.lemons.gubbins.gen.JigsawConfig;
 import party.lemons.gubbins.gen.WarpedPodFeature;
 import party.lemons.gubbins.gen.camp.CampFeature;
 import party.lemons.gubbins.gen.cavebiome.CaveBiomeFeature;
 import party.lemons.gubbins.gen.dungeon.EnhancedDungeonFeature;
-import party.lemons.gubbins.gen.JigsawConfig;
-import party.lemons.gubbins.gen.GubbinsOreFeature;
 import party.lemons.gubbins.util.registry.AutoReg;
 
 @AutoReg(type = Feature.class, registry = "feature")
