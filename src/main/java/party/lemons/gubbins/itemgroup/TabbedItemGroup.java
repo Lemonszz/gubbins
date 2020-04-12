@@ -1,6 +1,7 @@
 package party.lemons.gubbins.itemgroup;
 
 import com.google.common.collect.Lists;
+import net.fabricmc.fabric.impl.item.group.ItemGroupExtensions;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ public abstract class TabbedItemGroup extends ItemGroup
 
 	protected TabbedItemGroup(Identifier id)
 	{
-		super(ItemGroup.GROUPS.length - 1, String.format("%s.%s", id.getNamespace(), id.getPath()));
+		super(createTabIndex(), String.format("%s.%s", id.getNamespace(), id.getPath()));
 	}
 
 	public void initialize()
@@ -69,4 +70,9 @@ public abstract class TabbedItemGroup extends ItemGroup
 		return hasInitialized;
 	}
 
+	private static int createTabIndex()
+	{
+		((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
+		return ItemGroup.GROUPS.length - 1;
+	}
 }

@@ -34,7 +34,6 @@ public class Gubbins implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
 		GROUP = new GubbinsItemGroup(new Identifier(Gubbins.MODID, Gubbins.MODID));
 
 		config = GubbinsConfig.load();
