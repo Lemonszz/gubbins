@@ -4,7 +4,7 @@
   "textures": {
     "0": "gubbins:block/warped_pod_3",
     "1": "gubbins:block/warped_pod_fruit",
-    "particle": "warped_pod_3"
+    "particle": "gubbins:block/warped_pod_2"
   },
   "elements": [
     {
