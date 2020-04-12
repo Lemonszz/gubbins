@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "gubbins:block/flint_shingle",
+    "top": "gubbins:block/flint_shingle",
+    "side": "gubbins:block/flint_shingle"
+  }
+}

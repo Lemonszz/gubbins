@@ -3,6 +3,7 @@ package party.lemons.gubbins.init;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
+import party.lemons.gubbins.gen.WarpedPodFeature;
 import party.lemons.gubbins.gen.camp.CampFeature;
 import party.lemons.gubbins.gen.cavebiome.CaveBiomeFeature;
 import party.lemons.gubbins.gen.dungeon.EnhancedDungeonFeature;
@@ -17,4 +18,5 @@ public class GubbinsFeatures
 	public static final EnhancedDungeonFeature ENHANCED_DUNGEON = new EnhancedDungeonFeature(JigsawConfig::deserialize);
 	public static final CampFeature CAMPSITE = new CampFeature(JigsawConfig::deserialize);
 	public static final CaveBiomeFeature CAVE_BIOME = new CaveBiomeFeature(DefaultFeatureConfig::deserialize);
+	public static final WarpedPodFeature WARPED_POD = new WarpedPodFeature(DefaultFeatureConfig::deserialize);
 }

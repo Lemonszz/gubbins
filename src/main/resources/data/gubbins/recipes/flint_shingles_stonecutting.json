@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gubbins:flint_block"
+  },
+  "result": "gubbins:flint_shingles",
+  "count": 1
+}

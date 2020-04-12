@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gubbins:flint_block"
+    }
+  },
+  "result": {
+    "item": "gubbins:flint_shingles",
+    "count": 4
+  }
+}

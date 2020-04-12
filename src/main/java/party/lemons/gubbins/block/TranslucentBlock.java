@@ -5,9 +5,9 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.RenderLayer;
 
-public class LayeredBlock extends GubbinsBlock
+public class TranslucentBlock extends GubbinsBlock
 {
-	public LayeredBlock(Settings settings)
+	public TranslucentBlock(Settings settings)
 	{
 		super(settings);
 
