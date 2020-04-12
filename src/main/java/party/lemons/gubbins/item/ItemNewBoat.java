@@ -17,12 +17,13 @@ import party.lemons.gubbins.boat.BoatType;
 import party.lemons.gubbins.entity.NewBoatEntity;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class ItemNewBoat extends Item
 {
-	private final BoatType type;
+	private final Supplier<BoatType> type;
 
-	public ItemNewBoat(BoatType type, Item.Settings settings)
+	public ItemNewBoat(Supplier<BoatType> type, Item.Settings settings)
 	{
 		super(settings);
 
@@ -75,7 +76,7 @@ public class ItemNewBoat extends Item
 	public NewBoatEntity createBoat(World world, double x, double y, double z)
 	{
 		NewBoatEntity boatEntity = new NewBoatEntity(world, x, y, z);
-		boatEntity.setBoatType(type);
+		boatEntity.setBoatType(type.get());
 		world.spawnEntity(boatEntity);
 
 		return boatEntity;

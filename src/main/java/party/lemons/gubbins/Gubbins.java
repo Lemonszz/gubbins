@@ -4,12 +4,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.fabricmc.fabric.impl.item.group.ItemGroupExtensions;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerFactory;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import party.lemons.gubbins.adornment.Adornments;
@@ -19,6 +16,7 @@ import party.lemons.gubbins.command.BetterLocateCommand;
 import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.init.*;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
+import party.lemons.gubbins.itemgroup.GubbinsItemGroup;
 import party.lemons.gubbins.util.registry.RegistryLoader;
 
 public class Gubbins implements ModInitializer
@@ -36,7 +34,8 @@ public class Gubbins implements ModInitializer
 	static
 	{
 		((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
-		GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", tabID.getNamespace(), tabID.getPath())) {
+		GROUP = new GubbinsItemGroup(new Identifier(Gubbins.MODID, Gubbins.MODID));
+		/*GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", tabID.getNamespace(), tabID.getPath())) {
 			@Override
 			public ItemStack createIcon() {
 				return new ItemStack(GubbinsItems.AMETHYST);
@@ -62,7 +61,7 @@ public class Gubbins implements ModInitializer
 					}
 				});
 			}
-		};
+		};*/
 	}
 
 	@Override
@@ -79,6 +78,7 @@ public class Gubbins implements ModInitializer
 		BoatTypes.REGISTRY.isEmpty();
 		Adornments.REGISTRY.isEmpty();
 
+		RegistryLoader.register(BoatTypes.class);
 		RegistryLoader.register(GubbinsBlocks.class);
 		RegistryLoader.register(GubbinsItems.class);
 		RegistryLoader.register(GubbinsRecipes.class);
@@ -90,7 +90,6 @@ public class Gubbins implements ModInitializer
 		RegistryLoader.register(GubbinsStructurePieces.class);
 		RegistryLoader.register(GubbinsStructures.class);
 		RegistryLoader.register(Adornments.class);
-		RegistryLoader.register(BoatTypes.class);
 
 
 		GubbinsBlocks.initDecorations();

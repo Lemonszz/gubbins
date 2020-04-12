@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "gubbins:prismarine_arrow",
+    "gubbins:quiver",
+    "gubbins:potion_flask",
+    "gubbins:telescope",
+    "gubbins:crimson_boat",
+    "gubbins:warped_boat"
+  ]
+}

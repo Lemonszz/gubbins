@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "gubbins:garnet",
+    "gubbins:amethyst",
+    "gubbins:onyx",
+    "gubbins:onyx_ore",
+    "gubbins:amethyst_ore",
+    "gubbins:garnet_ore",
+    "gubbins:diamond_ice_ore",
+    "gubbins:gold_ice_ore",
+    "gubbins:redstone_ice_ore",
+    "gubbins:coal_ice_ore",
+    "gubbins:iron_ice_ore",
+    "gubbins:amethyst_block",
+    "gubbins:garnet_block",
+    "gubbins:onyx_block"
+  ]
+}

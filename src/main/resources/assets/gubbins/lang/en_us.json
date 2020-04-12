@@ -56,5 +56,9 @@
   "container.gubbins.quiver": "Quiver",
   "entity.gubbins.new_boat": "Boat",
   "entity.gubbins.prismarine_arrow": "Prismarine Arrow",
-  "itemGroup.gubbins.gubbins": "Gubbins"
+  "itemGroup.gubbins.gubbins": "Gubbins",
+  "subtab.decoration": "Decoration",
+  "subtab.ore": "Ore",
+  "subtab.utility": "Utility",
+  "subtab.all": "All"
 }

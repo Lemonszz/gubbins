@@ -23,7 +23,8 @@
     "ArmorFeatureRendererMixin",
     "GameRendererMixin",
     "MouseMixin",
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "CreativeInventoryScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

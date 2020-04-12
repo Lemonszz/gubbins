@@ -1,6 +1,9 @@
 package party.lemons.gubbins.init;
 
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.tag.Tag;
+import net.minecraft.util.Identifier;
 import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.boat.BoatTypes;
 import party.lemons.gubbins.item.*;
@@ -21,8 +24,8 @@ public class GubbinsItems
 
 	public static final Item WARPED_POD_SEEDS = new WarpedPodSeedsItem(GubbinsBlocks.WARPED_POD, settings());
 
-	public static final Item CRIMSON_BOAT = new ItemNewBoat(BoatTypes.CRIMSON, settings().maxCount(1));
-	public static final Item WARPED_BOAT = new ItemNewBoat(BoatTypes.WARPED, settings().maxCount(1));
+	public static final Item CRIMSON_BOAT = new ItemNewBoat(()->BoatTypes.CRIMSON, settings().maxCount(1));
+	public static final Item WARPED_BOAT = new ItemNewBoat(()->BoatTypes.WARPED, settings().maxCount(1));
 
 	//Used for adornment overlay, honestly the easiest way lol
 	public static final Item DISPLAY_ITEM_HELMET = new DisplayItem();
@@ -30,6 +33,9 @@ public class GubbinsItems
 	public static final Item DISPLAY_ITEM_LEGGINGS = new DisplayItem();
 	public static final Item DISPLAY_ITEM_FEET = new DisplayItem();
 
+	public static final Tag<Item> DECORATION = TagRegistry.item(new Identifier(Gubbins.MODID, "decoration"));
+	public static final Tag<Item> ORE = TagRegistry.item(new Identifier(Gubbins.MODID, "ore"));
+	public static final Tag<Item> UTILITY = TagRegistry.item(new Identifier(Gubbins.MODID, "utility"));
 
 	public static Item.Settings settings()
 	{
