@@ -28,7 +28,7 @@ public class QuiverItem extends Item
 		{
 			ItemStack stack = user.getStackInHand(hand);
 			int slot = EntityUtil.getSlotWithItemStack(user, stack);
-			ContainerProviderRegistry.INSTANCE.openContainer(Gubbins.QUIVER, user, buf->buf.writeInt(slot));
+			ContainerProviderRegistry.INSTANCE.openContainer(Gubbins.QUIVER_SCREEN, user, buf->buf.writeInt(slot));
 
 		}
 		user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);

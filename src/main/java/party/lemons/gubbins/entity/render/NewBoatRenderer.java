@@ -1,6 +1,8 @@
 package party.lemons.gubbins.entity.render;
 
 import com.google.common.collect.Maps;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -10,6 +12,7 @@ import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.inventory.BasicInventory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Quaternion;
@@ -54,6 +57,19 @@ public class NewBoatRenderer extends EntityRenderer<NewBoatEntity>
 		this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
 		VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getWaterMask());
 		this.model.getBottom().render(matrixStack, vertexConsumer2, i, OverlayTexture.DEFAULT_UV);
+
+		if (boatEntity.hasChest())
+		{
+			matrixStack.push();
+			float chestScale = 1F;
+			matrixStack.scale(chestScale, chestScale, chestScale);
+			matrixStack.translate(0.1D, 0.25F, 0.5D);
+			matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
+			matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(180.0F));
+			MinecraftClient.getInstance().getBlockRenderManager().renderBlockAsEntity(Blocks.CHEST.getDefaultState(), matrixStack, vertexConsumerProvider, i, OverlayTexture.DEFAULT_UV);
+			matrixStack.pop();
+		}
+
 		matrixStack.pop();
 		super.render(boatEntity, f, g, matrixStack, vertexConsumerProvider, i);
 	}

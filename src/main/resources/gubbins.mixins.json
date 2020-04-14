@@ -16,7 +16,8 @@
     "StructurePlacementDataMixin",
     "BiomeMixin",
     "SilkTouchEnchantmentMixin",
-    "DragonEggBlockMixin"
+    "DragonEggBlockMixin",
+    "BoatEntityMixin"
   ],
   "client": [
     "ItemRendererMixin",
@@ -24,7 +25,8 @@
     "GameRendererMixin",
     "MouseMixin",
     "InGameHudMixin",
-    "CreativeInventoryScreenMixin"
+    "CreativeInventoryScreenMixin",
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
