@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "map=false": { "model": "gubbins:misc/sticky_item_frame" },
+    "map=true":  { "model": "gubbins:misc/sticky_item_frame_map" }
+  }
+}

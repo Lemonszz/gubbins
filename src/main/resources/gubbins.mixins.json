@@ -26,7 +26,8 @@
     "MouseMixin",
     "InGameHudMixin",
     "CreativeInventoryScreenMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "ModelLoaderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

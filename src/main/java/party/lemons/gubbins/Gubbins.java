@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.loot.function.LootFunctions;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandlerFactory;
 import net.minecraft.util.Identifier;
@@ -19,6 +20,7 @@ import party.lemons.gubbins.entity.NewBoatEntity;
 import party.lemons.gubbins.init.*;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
 import party.lemons.gubbins.itemgroup.GubbinsItemGroup;
+import party.lemons.gubbins.misc.BiomeLootFunction;
 import party.lemons.gubbins.util.registry.RegistryLoader;
 
 public class Gubbins implements ModInitializer
@@ -67,6 +69,8 @@ public class Gubbins implements ModInitializer
 		GubbinsBlocks.initDecorations();
 		GubbinsGeneration.init();
 		GubbinsLootTables.init();
+
+		LootFunctions.register(new BiomeLootFunction.Factory());
 
 		CommandRegistry.INSTANCE.register(false, d->{
 			BetterLocateCommand.register(d);

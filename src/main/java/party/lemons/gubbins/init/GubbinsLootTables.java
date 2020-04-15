@@ -4,11 +4,16 @@ import com.google.common.collect.Lists;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.FabricLootSupplierBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
+import net.minecraft.item.Items;
+import net.minecraft.item.map.MapIcon;
 import net.minecraft.loot.ConstantLootTableRange;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.ExplorationMapLootFunction;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biomes;
 import org.apache.commons.lang3.ArrayUtils;
+import party.lemons.gubbins.misc.BiomeLootFunction;
 
 import java.util.List;
 
@@ -30,7 +35,38 @@ public class GubbinsLootTables
 				new Identifier("minecraft", "chests/shipwreck_map"),
 				new Identifier("minecraft", "chests/shipwreck_treasure"),
 				new Identifier("minecraft", "chests/underwater_ruin_big"),
-				new Identifier("minecraft", "chests/underwater_ruin_small")
+				new Identifier("minecraft", "chests/underwater_ruin_small"),
+				new Identifier("minecraft", "gameplay/fishing/treasure")
+		));
+
+		FabricLootPoolBuilder JUNGLE_TEMPLE_MAP = FabricLootPoolBuilder.builder()
+				.withRolls(ConstantLootTableRange.create(1))
+				.withCondition(RandomChanceLootCondition.builder(0.10F).build())
+				.withEntry(ItemEntry.builder(Items.MAP)
+						.withFunction(
+								ExplorationMapLootFunction.create()
+										.withSkipExistingChunks(false)
+										.withDestination("Jungle_Pyramid")
+										.withDecoration(MapIcon.Type.MANSION)
+										.withZoom((byte) 1)
+						)
+				.build());
+
+		insert(new LootTableInsert(JUNGLE_TEMPLE_MAP,
+				new Identifier("minecraft", "gameplay/fishing/treasure"),
+				new Identifier("minecraft", "chests/simple_dungeon")
+		));
+
+
+		FabricLootPoolBuilder MUSHROOM_MAP = FabricLootPoolBuilder.builder()
+				.withRolls(ConstantLootTableRange.create(1))
+				.withCondition(RandomChanceLootCondition.builder(0.05F).build())
+				.withEntry(ItemEntry.builder(Items.MAP)
+						.withFunction(new BiomeLootFunction.Builder(Biomes.MUSHROOM_FIELDS, (byte)2)).build());
+
+		insert(new LootTableInsert(MUSHROOM_MAP,
+				new Identifier("minecraft", "gameplay/fishing/treasure"),
+				new Identifier("minecraft", "chests/simple_dungeon")
 		));
 
 		LootTableLoadingCallback.EVENT.register(((resourceManager, lootManager, identifier, supplier, lootTableSetter) -> {

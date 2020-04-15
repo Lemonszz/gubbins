@@ -9,6 +9,7 @@ import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.text.TranslatableText;
 import party.lemons.gubbins.entity.render.NewBoatRenderer;
 import party.lemons.gubbins.entity.render.PrismarineArrowRender;
+import party.lemons.gubbins.entity.render.StickyItemFrameRender;
 import party.lemons.gubbins.init.*;
 import party.lemons.gubbins.item.quiver.QuiverScreen;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
@@ -28,5 +29,6 @@ public class GubbinsClient implements ClientModInitializer
 
 		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.NEW_BOAT, (r, c)->new NewBoatRenderer(r));
 		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.PRISMARINE_ARROW, (r, c)->new PrismarineArrowRender(r));
+		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.STICKY_ITEM_FRAME, (r, c)->new StickyItemFrameRender(r, MinecraftClient.getInstance().getItemRenderer()));
 	}
 }
