@@ -9,6 +9,7 @@ import party.lemons.gubbins.entity.NewBoatEntity;
 public class GubbinsNetwork
 {
 	public static final Identifier SPAWN_ENTITY_CUSTOM = new Identifier(Gubbins.MODID, "spawn_entity");
+	public static final Identifier SPAWN_ENTITY_STICKY_FRAME = new Identifier(Gubbins.MODID, "sticky_frame");
 	public static final Identifier CL_OPEN_BOAT_CHEST = new Identifier(Gubbins.MODID, "cl_open_boat_chest");
 
 	public static void initCommon(){
