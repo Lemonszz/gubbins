@@ -12,7 +12,6 @@
     "CampfireBlockEntityMixin",
     "CampfireBlockMixin",
     "ChunkGeneratorMixin",
-    "FeatureMixin",
     "StructurePlacementDataMixin",
     "BiomeMixin",
     "SilkTouchEnchantmentMixin",
