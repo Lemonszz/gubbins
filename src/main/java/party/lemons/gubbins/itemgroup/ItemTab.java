@@ -37,7 +37,7 @@ public class ItemTab
 		return itemTag;
 	}
 
-	public String geTranslationKey()
+	public String getTranslationKey()
 	{
 		return "subtab." + name;
 	}

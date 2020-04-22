@@ -116,8 +116,7 @@ public class StickyItemFrameEntity extends ItemFrameEntity
 			mapState.removeFrame(this.attachmentPos, this.getEntityId());
 			mapState.setDirty(true);
 		}
-
-		map.setFrame(null);
+		map.method_27320(null);
 	}
 
 	@Override

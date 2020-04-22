@@ -15,6 +15,7 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -116,14 +117,14 @@ public class PotionFlaskItem extends Item
 			return super.getName(stack);
 
 		StatusEffectInstance in = potion.getEffects().get(0);
-		return new TranslatableText(in.getTranslationKey()).append(" ").append(super.getName(stack));
+		return new TranslatableText(in.getTranslationKey()).append(new LiteralText(" ")).append(super.getName(stack));
 	}
 
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		if(getUsages(stack) > 0)
 		{
-			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack), Gubbins.config.POTION_FLASK.maxSize).setStyle(new Style().setColor(Formatting.DARK_PURPLE)));
+			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack), Gubbins.config.POTION_FLASK.maxSize).setStyle(Style.field_24360.setColor(Formatting.DARK_PURPLE)));
 		}
 
 		PotionUtil.buildTooltip(stack, tooltip, 1.0F);

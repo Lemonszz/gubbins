@@ -4,7 +4,8 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.itemgroup.ItemTab;
@@ -16,7 +17,7 @@ public class ItemGroupTabWidget extends ButtonWidget
 
 	public ItemGroupTabWidget(int x, int y, ItemTab tab, PressAction onPress)
 	{
-		super(x, y, 22, 22, I18n.translate(tab.geTranslationKey()), onPress);
+		super(x, y, 22, 22, new TranslatableText(tab.getTranslationKey()), onPress);
 
 		this.tab = tab;
 	}
@@ -26,7 +27,7 @@ public class ItemGroupTabWidget extends ButtonWidget
 		return isHovered || isSelected ? 1 : 0;
 	}
 
-	public void renderButton(int mouseX, int mouseY, float delta) {
+	public void renderButton(MatrixStack matrixStack, int mouseX, int mouseY, float delta) {
 		MinecraftClient minecraftClient = MinecraftClient.getInstance();
 		minecraftClient.getTextureManager().bindTexture(TEXTURE);
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
@@ -36,8 +37,8 @@ public class ItemGroupTabWidget extends ButtonWidget
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
 
-		this.drawTexture(this.x, this.y, 0, i * height, this.width, this.height);
-		this.renderBg(minecraftClient, mouseX, mouseY);
+		this.drawTexture(matrixStack, this.x, this.y, 0, i * height, this.width, this.height);
+		this.renderBg(matrixStack, minecraftClient, mouseX, mouseY);
 
 		minecraftClient.getItemRenderer().renderGuiItem(tab.getIcon(), this.x + 3, this.y + 3);
 	}

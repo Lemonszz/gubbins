@@ -7,6 +7,7 @@ import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,8 +25,8 @@ public class InGameHudMixin
 
 	private final Identifier TELESCOPE_BLUR = new Identifier(Gubbins.MODID, "textures/misc/telescope_blur.png");
 
-	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;getArmorStack(I)Lnet/minecraft/item/ItemStack;"), method = "Lnet/minecraft/client/gui/hud/InGameHud;render(F)V")
-	public void render(float tickDelta, CallbackInfo cbi)
+	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;getArmorStack(I)Lnet/minecraft/item/ItemStack;"), method = "render(Lnet/minecraft/client/util/math/MatrixStack;F)V")
+	public void render(MatrixStack stack, float tickDelta, CallbackInfo cbi)
 	{
 		if(EntityUtil.isUsingTelescope(MinecraftClient.getInstance().player) && MinecraftClient.getInstance().options.perspective == 0)
 		{
@@ -50,8 +51,8 @@ public class InGameHudMixin
 			bufferBuilder.vertex(xPos, 0.0D, -90.0D).texture(0.0F, 0.0F).next();
 			tessellator.draw();
 
-			DrawableHelper.fill(0, 0, (int)xPos + 1, scaledHeight, 0xFF000000);
-			DrawableHelper.fill((int)(xPos + width), 0, scaledWidth, scaledHeight, 0xFF000000);
+			DrawableHelper.fill(stack, 0, 0, (int)xPos + 1, scaledHeight, 0xFF000000);
+			DrawableHelper.fill(stack, (int)(xPos + width), 0, scaledWidth, scaledHeight, 0xFF000000);
 
 			RenderSystem.depthMask(true);
 			RenderSystem.enableDepthTest();

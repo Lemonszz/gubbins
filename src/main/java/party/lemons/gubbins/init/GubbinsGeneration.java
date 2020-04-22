@@ -36,7 +36,7 @@ public class GubbinsGeneration
 		ICY.add(Biomes.SNOWY_TAIGA);
 
 		if(Gubbins.config.ORE.enableAmethyst)
-			AMETHYST_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.END_STONE, GubbinsBlocks.AMETHYST_ORE.getDefaultState(), 2)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(4, 0, 0, 50)))));
+			AMETHYST_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.END_STONE, GubbinsBlocks.AMETHYST_ORE.getDefaultState(), 4)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 0, 128)))));
 		if(Gubbins.config.ORE.enableGarnet)
 			GARNET_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(bl->bl.getBlock() == Blocks.NETHERRACK, GubbinsBlocks.GARNET_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(6, 0, 0, 128)))));
 		if(Gubbins.config.ORE.enableOnyx)

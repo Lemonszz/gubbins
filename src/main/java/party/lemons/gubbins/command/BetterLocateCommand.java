@@ -47,12 +47,12 @@ public class BetterLocateCommand
 	}
 
 	public static int sendCoordinates(ServerCommandSource serverCommandSource, String string, BlockPos blockPos, BlockPos blockPos2, String successMessage) {
-		int distance = MathHelper.floor(getDistance(blockPos.getX(), blockPos.getZ(), blockPos2.getX(), blockPos2.getZ()));
-		Text text = Texts.bracketed(new TranslatableText("chat.coordinates", blockPos2.getX(), "~", blockPos2.getZ())).styled((style) -> {
-			style.setColor(Formatting.GREEN).setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + blockPos2.getX() + " ~ " + blockPos2.getZ())).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("chat.coordinates.tooltip")));
+		int i = MathHelper.floor(getDistance(blockPos.getX(), blockPos.getZ(), blockPos2.getX(), blockPos2.getZ()));
+		Text text = Texts.bracketed(new TranslatableText("chat.coordinates", new Object[]{blockPos2.getX(), "~", blockPos2.getZ()})).method_27694((style) -> {
+			return style.setColor(Formatting.GREEN).setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + blockPos2.getX() + " ~ " + blockPos2.getZ())).setHoverEvent(new HoverEvent(HoverEvent.class_5247.field_24342, new TranslatableText("chat.coordinates.tooltip")));
 		});
-		serverCommandSource.sendFeedback(new TranslatableText(successMessage, string, text, distance), false);
-		return distance;
+		serverCommandSource.sendFeedback(new TranslatableText(successMessage, new Object[]{string, text, i}), false);
+		return i;
 	}
 
 	private static float getDistance(int x1, int y1, int x2, int y2) {

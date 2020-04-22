@@ -15,7 +15,7 @@ public class GameRendererMixin
 	@Inject(at = @At("HEAD"), method = "getFov(Lnet/minecraft/client/render/Camera;FZ)D", cancellable = true)
 	public void getFov(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Double> cbi)
 	{
-		if(EntityUtil.isUsingTelescope(MinecraftClient.getInstance().player) && MinecraftClient.getInstance().options.perspective == 0)
+		if(MinecraftClient.getInstance() != null && MinecraftClient.getInstance().player != null && EntityUtil.isUsingTelescope(MinecraftClient.getInstance().player) && MinecraftClient.getInstance().options.perspective == 0)
 		{
 			cbi.setReturnValue(7D);
 		}

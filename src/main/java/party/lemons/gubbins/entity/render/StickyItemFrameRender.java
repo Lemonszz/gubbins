@@ -31,7 +31,7 @@ public class StickyItemFrameRender extends ItemFrameEntityRenderer
 	@Override
 	public void render(ItemFrameEntity entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
 		if (this.hasLabel(entity)) {
-			this.renderLabelIfPresent(entity, entity.getDisplayName().asFormattedString(), matrixStack, vertexConsumerProvider, i);
+			this.renderLabelIfPresent(entity, entity.getDisplayName(), matrixStack, vertexConsumerProvider, i);
 		}
 
 		matrixStack.push();
