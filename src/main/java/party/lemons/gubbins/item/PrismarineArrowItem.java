@@ -15,7 +15,6 @@ public class PrismarineArrowItem extends ArrowItem
 		super(settings);
 	}
 
-
 	public PersistentProjectileEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
 
 		QuiverItem.doQuiverCheck(shooter);

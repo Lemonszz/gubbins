@@ -50,6 +50,8 @@ public class GubbinsConfig
 		public boolean enableWaterBottleConcrete = true;
 		public boolean enableCampfireDye = true;
 		public boolean enableMansionInSnowTundra = true;
+		public boolean enableSilkTouch2 = true;
+		public boolean enableWarpedPodGen = true;
 	}
 
 	public static class PotionFlask

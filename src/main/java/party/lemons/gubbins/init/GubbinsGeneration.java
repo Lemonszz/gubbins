@@ -43,7 +43,8 @@ public class GubbinsGeneration
 			ONYX_BIOMES.forEach(b->b.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, GubbinsFeatures.GUBBINS_ORE.configure(new GubbinsOreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE.getCondition(), GubbinsBlocks.ONYX_ORE.getDefaultState(), 3)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 40)))));
 
 		//Warped Pods
-		Biomes.WARPED_FOREST.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, GubbinsFeatures.WARPED_POD.configure(FeatureConfig.DEFAULT).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 128))));
+		if(Gubbins.config.MISC.enableWarpedPodGen)
+			Biomes.WARPED_FOREST.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, GubbinsFeatures.WARPED_POD.configure(FeatureConfig.DEFAULT).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 128))));
 
 		if(Gubbins.config.ICE_CAVES.enabled)
 		{

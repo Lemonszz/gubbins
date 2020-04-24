@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import party.lemons.gubbins.Gubbins;
 
 @Mixin(SilkTouchEnchantment.class)
 public class SilkTouchEnchantmentMixin
@@ -12,7 +13,8 @@ public class SilkTouchEnchantmentMixin
 	@Inject(at = @At("RETURN"), method = "getMaximumLevel()I", cancellable = true)
 	public void getMaximumLevel(CallbackInfoReturnable<Integer> cbi)
 	{
-		cbi.setReturnValue(2);
+		if(Gubbins.config.MISC.enableSilkTouch2)
+			cbi.setReturnValue(2);
 	}
 
 	@Inject(at = @At("RETURN"), method = "getMinimumPower(I)I", cancellable = true)
