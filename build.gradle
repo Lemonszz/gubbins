@@ -24,6 +24,7 @@ dependencies {
 
 	include "org.reflections:reflections:${project.reflections_version}"
 	compile "org.reflections:reflections:${project.reflections_version}"
+	include "org.javassist:javassist:${project.javassist_version}"
 }
 
 processResources {
