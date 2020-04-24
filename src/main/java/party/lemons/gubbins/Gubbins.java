@@ -57,22 +57,6 @@ public class Gubbins implements ModInitializer
 		RegistryLoader.registerPackage("party.lemons");
 		RegistryLoader.init();
 
-
-
-	/*	RegistryLoader.register(BoatTypes.class);
-		RegistryLoader.register(GubbinsBlocks.class);
-		RegistryLoader.register(GubbinsItems.class);
-		RegistryLoader.register(GubbinsRecipes.class);
-		RegistryLoader.register(CaveBiomes.class);
-		RegistryLoader.register(GubbinsParticles.class);
-		RegistryLoader.register(GubbinsCarvers.class);
-		RegistryLoader.register(GubbinsEntities.class);
-		RegistryLoader.register(GubbinsFeatures.class);
-		RegistryLoader.register(GubbinsStructurePieces.class);
-		RegistryLoader.register(GubbinsStructures.class);
-		RegistryLoader.register(Adornments.class);*/
-
-
 		GubbinsBlocks.initDecorations();
 		GubbinsGeneration.init();
 		GubbinsLootTables.init();

@@ -25,8 +25,6 @@ public class GubbinsNetworkClient
 			double z = data.readDouble();
 			float pitch = data.readFloat();
 			float yaw = data.readFloat();
-			//float pitch = (data.readFloat() * 360) / 256.0F;
-			//float yaw = (data.readFloat() * 360) / 256.0F;
 
 			ctx.getTaskQueue().execute(() -> {
 				ClientWorld world = MinecraftClient.getInstance().world;
