@@ -16,7 +16,9 @@
     "BiomeMixin",
     "SilkTouchEnchantmentMixin",
     "DragonEggBlockMixin",
-    "BoatEntityMixin"
+    "BoatEntityMixin",
+    "LlamaEntityMixin",
+    "GoalSelectorMixin"
   ],
   "client": [
     "ItemRendererMixin",
