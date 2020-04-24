@@ -1,21 +1,21 @@
 package party.lemons.gubbins.util.registry;
 
-import com.google.common.reflect.ClassPath;
-import net.minecraft.block.Block;
+import com.google.common.collect.Lists;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.spongepowered.asm.mixin.transformer.throwables.IllegalClassLoadError;
-import party.lemons.gubbins.Gubbins;
+import org.reflections.Reflections;
 
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.Locale;
+import java.util.*;
 
 public class RegistryLoader
 {
+	private static Set<String> REGISTER_PACKAGES = new HashSet<>();
+	private static Map<Registry, RegistryCallback> CALLBACKS = new HashMap<>();
+
 	public static void register(Class c)
 	{
 		Annotation reg = c.getDeclaredAnnotation(AutoReg.class);
@@ -31,17 +31,13 @@ public class RegistryLoader
 					if(Modifier.isStatic(f.getModifiers()) && i.type().isAssignableFrom(f.getType()))
 					{
 						String regName = f.getName().toLowerCase(Locale.ENGLISH);
-						Registry.register(registry, new Identifier(Gubbins.MODID, regName), f.get(c));
+						Identifier id = new Identifier(i.modid(), regName);
+						Object regObj = f.get(c);
+						Registry.register(registry, id, regObj);
 
-						//Block Special Case, create item if need be
-						if(i.registry().equalsIgnoreCase("block"))
+						if(CALLBACKS.containsKey(registry))
 						{
-							Block bl = (Block) f.get(c);
-							if(bl instanceof BlockWithItem && ((BlockWithItem) bl).hasItem())
-							{
-								BlockItem bi = new BlockItem(bl, ((BlockWithItem) bl).makeItemSettings());
-								Registry.register(Registry.ITEM, new Identifier(Gubbins.MODID, regName), bi);
-							}
+							CALLBACKS.get(registry).callback(registry, regObj, id);
 						}
 					}
 				}
@@ -53,54 +49,46 @@ public class RegistryLoader
 		}
 	}
 
-	//TODO make this work in prod
 	public static void init()
 	{
-		try
+		//Block -> BlockItem callback via BlockWithItem interface
+		registerCallback(Registry.BLOCK, (registry, block, identifier)->
 		{
-			ClassPath path = ClassPath.from(RegistryLoader.class.getClassLoader());
-			for(ClassPath.ClassInfo info : path.getTopLevelClassesRecursive("party.lemons"))
+			if(block instanceof BlockWithItem && ((BlockWithItem) block).hasItem())
 			{
-				try
-				{
-					Class c = Class.forName(info.getName());
-					Annotation reg = c.getDeclaredAnnotation(AutoReg.class);
-					if(reg != null)
-					{
-						AutoReg i = (AutoReg) reg;
-						Registry registry = Registry.REGISTRIES.get(new Identifier(i.registry()));
-
-						for(Field f : c.getDeclaredFields())
-						{
-							if(Modifier.isStatic(f.getModifiers()) && i.type().isAssignableFrom(f.getType()))
-							{
-								String regName = f.getName().toLowerCase(Locale.ENGLISH);
-								Registry.register(registry, new Identifier(Gubbins.MODID, regName), f.get(c));
-
-								//Block Special Case, create item if need be
-								if(i.registry().equalsIgnoreCase("block"))
-								{
-									Block bl = (Block) f.get(c);
-									if(bl instanceof BlockWithItem && ((BlockWithItem) bl).hasItem())
-									{
-										BlockItem bi = new BlockItem(bl, ((BlockWithItem) bl).makeItemSettings());
-										Registry.register(Registry.ITEM, new Identifier(Gubbins.MODID, regName), bi);
-									}
-								}
-							}
-						}
-
-					}
-				}
-				catch(RuntimeException e)   // lol
-				{
-
-				}
+				BlockItem bi = new BlockItem(block, ((BlockWithItem) block).makeItemSettings());
+				Registry.register(Registry.ITEM, identifier, bi);
 			}
+		});
 
-		}
-		catch(IOException | IllegalAccessException | ClassNotFoundException | IllegalClassLoadError e)
+		for(String s : REGISTER_PACKAGES)
 		{
+			Reflections reflections = new Reflections(s);
+			List<Class<?>> toRegister = Lists.newArrayList();
+			toRegister.addAll(reflections.getTypesAnnotatedWith(AutoReg.class));
+			toRegister.sort((a,b)->{
+				int p1 = a.getDeclaredAnnotation(AutoReg.class).priority();
+				int p2 = b.getDeclaredAnnotation(AutoReg.class).priority();
+
+				return p1 - p2;
+			});
+
+			toRegister.forEach(RegistryLoader::register);
 		}
+	}
+
+	public static <T> void registerCallback(Registry<T> registry, RegistryCallback<T> callback)
+	{
+		CALLBACKS.put(registry, callback);
+	}
+
+	public static void registerPackage(String packagePrefix)
+	{
+		REGISTER_PACKAGES.add(packagePrefix);
+	}
+
+	public interface RegistryCallback<T>
+	{
+		void callback(Registry<T> registry, T registryObject, Identifier identifier);
 	}
 }

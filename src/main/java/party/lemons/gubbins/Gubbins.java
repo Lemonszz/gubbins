@@ -17,7 +17,10 @@ import party.lemons.gubbins.cave.CaveBiomes;
 import party.lemons.gubbins.command.BetterLocateCommand;
 import party.lemons.gubbins.config.GubbinsConfig;
 import party.lemons.gubbins.entity.NewBoatEntity;
-import party.lemons.gubbins.init.*;
+import party.lemons.gubbins.init.GubbinsBlocks;
+import party.lemons.gubbins.init.GubbinsGeneration;
+import party.lemons.gubbins.init.GubbinsLootTables;
+import party.lemons.gubbins.init.GubbinsNetwork;
 import party.lemons.gubbins.item.quiver.QuiverScreenHandler;
 import party.lemons.gubbins.itemgroup.GubbinsItemGroup;
 import party.lemons.gubbins.misc.BiomeLootFunction;
@@ -45,14 +48,18 @@ public class Gubbins implements ModInitializer
 		GubbinsConfig.write(config);
 
 		GubbinsNetwork.initCommon();
-		//RegistryLoader.init();
 
 		//Statically init classes lol
 		CaveBiomes.REGISTRY.isEmpty();
 		BoatTypes.REGISTRY.isEmpty();
 		Adornments.REGISTRY.isEmpty();
 
-		RegistryLoader.register(BoatTypes.class);
+		RegistryLoader.registerPackage("party.lemons");
+		RegistryLoader.init();
+
+
+
+	/*	RegistryLoader.register(BoatTypes.class);
 		RegistryLoader.register(GubbinsBlocks.class);
 		RegistryLoader.register(GubbinsItems.class);
 		RegistryLoader.register(GubbinsRecipes.class);
@@ -63,7 +70,7 @@ public class Gubbins implements ModInitializer
 		RegistryLoader.register(GubbinsFeatures.class);
 		RegistryLoader.register(GubbinsStructurePieces.class);
 		RegistryLoader.register(GubbinsStructures.class);
-		RegistryLoader.register(Adornments.class);
+		RegistryLoader.register(Adornments.class);*/
 
 
 		GubbinsBlocks.initDecorations();

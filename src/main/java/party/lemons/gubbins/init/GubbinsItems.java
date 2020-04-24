@@ -11,7 +11,7 @@ import party.lemons.gubbins.item.quiver.QuiverItem;
 import party.lemons.gubbins.util.registry.AutoReg;
 
 
-@AutoReg(type = Item.class, registry = "item")
+@AutoReg(type = Item.class, registry = "item", priority = 97)
 public class GubbinsItems
 {
 	public static final PotionFlaskItem POTION_FLASK = new PotionFlaskItem();

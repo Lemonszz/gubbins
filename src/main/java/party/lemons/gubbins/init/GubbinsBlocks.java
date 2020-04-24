@@ -11,7 +11,7 @@ import party.lemons.gubbins.block.WarpedPodBlock;
 import party.lemons.gubbins.util.DecorationBlockInfo;
 import party.lemons.gubbins.util.registry.AutoReg;
 
-@AutoReg(type = Block.class, registry = "block")
+@AutoReg(type = Block.class, registry = "block", priority = 98)
 public class GubbinsBlocks
 {
 	public static final Block AMETHYST_ORE = new TranslucentBlock(settings(Material.STONE, 1.5F).breakByTool(FabricToolTags.PICKAXES, 2).build());
