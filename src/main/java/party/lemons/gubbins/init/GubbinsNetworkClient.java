@@ -23,8 +23,10 @@ public class GubbinsNetworkClient
 			double x = data.readDouble();
 			double y = data.readDouble();
 			double z = data.readDouble();
-			float pitch = (data.readByte() * 360) / 256.0F;
-			float yaw = (data.readByte() * 360) / 256.0F;
+			float pitch = data.readFloat();
+			float yaw = data.readFloat();
+			//float pitch = (data.readFloat() * 360) / 256.0F;
+			//float yaw = (data.readFloat() * 360) / 256.0F;
 
 			ctx.getTaskQueue().execute(() -> {
 				ClientWorld world = MinecraftClient.getInstance().world;
@@ -34,6 +36,7 @@ public class GubbinsNetworkClient
 					entity.updateTrackedPosition(x, y, z);
 					entity.pitch = pitch;
 					entity.yaw = yaw;
+
 					entity.setEntityId(entityID);
 					entity.setUuid(entityUUID);
 					world.addEntity(entityID, entity);

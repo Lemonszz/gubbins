@@ -52,8 +52,7 @@ public class ItemNewBoat extends Item
 			}
 
 			if (hitResult.getType() == HitResult.Type.BLOCK) {
-				NewBoatEntity boatEntity = createBoat(world, hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z);
-				boatEntity.yaw = user.yaw;
+				NewBoatEntity boatEntity = createBoat(world, hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z, user.yaw);
 				if (!world.doesNotCollide(boatEntity, boatEntity.getBoundingBox().expand(-0.1D))) {
 					return TypedActionResult.fail(itemStack);
 				} else {
@@ -73,12 +72,11 @@ public class ItemNewBoat extends Item
 		}
 	}
 
-	public NewBoatEntity createBoat(World world, double x, double y, double z)
+	public NewBoatEntity createBoat(World world, double x, double y, double z, float yaw)
 	{
 		NewBoatEntity boatEntity = new NewBoatEntity(world, x, y, z);
 		boatEntity.setBoatType(type.get());
-		world.spawnEntity(boatEntity);
-
+		boatEntity.yaw = yaw;
 		return boatEntity;
 	}
 }
