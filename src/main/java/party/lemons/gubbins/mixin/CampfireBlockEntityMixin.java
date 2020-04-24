@@ -2,6 +2,8 @@ package party.lemons.gubbins.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.CampfireBlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
@@ -26,7 +28,7 @@ import party.lemons.gubbins.particle.DyedSmokeEffect;
 import java.util.Random;
 
 @Mixin(CampfireBlockEntity.class)
-public class CampfireBlockEntityMixin implements CampfireDye
+public abstract class CampfireBlockEntityMixin extends BlockEntity implements CampfireDye
 {
 	private DyeColor color = null;
 
@@ -36,6 +38,11 @@ public class CampfireBlockEntityMixin implements CampfireDye
 	private int[] cookingTimes;
 	@Shadow @Final
 	private int[] cookingTotalTimes;
+
+	public CampfireBlockEntityMixin(BlockEntityType<?> type)
+	{
+		super(type);
+	}
 
 	@Override
 	public DyeColor getColor()
@@ -48,6 +55,7 @@ public class CampfireBlockEntityMixin implements CampfireDye
 	{
 		this.color = color;
 		updateListeners();
+		markDirty();
 	}
 
 	@Inject(at = @At("HEAD"), method = "spawnSmokeParticles()V", cancellable = true)
