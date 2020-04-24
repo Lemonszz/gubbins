@@ -10,7 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import party.lemons.gubbins.entity.CaravanFollowable;
-import party.lemons.gubbins.entity.ai.BetterFormCavavanGoal;
+import party.lemons.gubbins.entity.CaravanFollowableContainer;
+import party.lemons.gubbins.entity.ai.BetterFormCaravanGoal;
 import party.lemons.gubbins.util.accessor.GoalSelectorAccessor;
 
 @Mixin(LlamaEntity.class)
@@ -20,47 +21,51 @@ public abstract class LlamaEntityMixin  extends AbstractDonkeyEntity implements 
 	protected void initGoals(CallbackInfo cbi)
 	{
 		((GoalSelectorAccessor)goalSelector).removeGoal(FormCaravanGoal.class);
-		goalSelector.add(2, new BetterFormCavavanGoal<>(this, 2.1D));
+		goalSelector.add(2, new BetterFormCaravanGoal<>(this, 2.1D));
 	}
 
-	private CaravanFollowable followingEntity;
-	private CaravanFollowable followerEntity;
+	@Inject(at = @At("RETURN"), method = "<init>")
+	public void onConstruct(CallbackInfo cbi)
+	{
+		followableContainer = new CaravanFollowableContainer(this);
+	}
+
+	private CaravanFollowableContainer followableContainer;
 
 	@Override
 	public CaravanFollowable getFollower()
 	{
-		return this.followerEntity;
+		return followableContainer.getFollower();
 	}
 
 	@Override
-	public CaravanFollowable getFollowing()
+	public CaravanFollowable getLeader()
 	{
-		return this.followingEntity;
+		return followableContainer.getLeader();
 	}
 
 	@Override
 	public void setFollower(CaravanFollowable follower)
 	{
-		this.followerEntity = follower;
+		followableContainer.setFollower(follower);
 	}
 
 	@Override
-	public void setFollowing(CaravanFollowable follower)
+	public void setLeader(CaravanFollowable follower)
 	{
-		this.followingEntity = follower;
-		follower.setFollower(this);
+		followableContainer.setLeader(follower);
 	}
 
 	@Override
 	public boolean canBeFollowed()
 	{
-		return getFollowing() != null && getFollower() == null;
+		return followableContainer.canBeFollowed();
 	}
 
 	@Override
-	public boolean isLeader()
+	public boolean hasCaravanLeaderCondition()
 	{
-		return this.isLeashed() && !isBeingFollowed();
+		return followableContainer.hasCaravanLeaderCondition();
 	}
 
 	protected LlamaEntityMixin(EntityType<? extends AbstractDonkeyEntity> entityType, World world)

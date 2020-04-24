@@ -18,7 +18,8 @@
     "DragonEggBlockMixin",
     "BoatEntityMixin",
     "LlamaEntityMixin",
-    "GoalSelectorMixin"
+    "GoalSelectorMixin",
+    "DefaultAttributeRegistryMixin"
   ],
   "client": [
     "ItemRendererMixin",

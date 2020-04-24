@@ -24,13 +24,14 @@ public abstract class GoalSelectorMixin implements GoalSelectorAccessor
 
 		for(WeightedGoal goal : goals)
 		{
-			if(goal.getClass() == clazz)
+			if(goal.getGoal().getClass() == clazz)
 			{
-				toRemove = goal;
+				toRemove = goal.getGoal();
 				break;
 			}
 		}
 
+		System.out.println(toRemove);
 		if(toRemove != null)
 			remove(toRemove);
 	}

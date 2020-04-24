@@ -1,30 +1,32 @@
 package party.lemons.gubbins.entity;
 
+import net.minecraft.entity.mob.MobEntity;
+
 public interface CaravanFollowable
 {
 	CaravanFollowable getFollower();
-	CaravanFollowable getFollowing();
+	CaravanFollowable getLeader();
 	void setFollower(CaravanFollowable follower);
-	void setFollowing(CaravanFollowable follower);
+	void setLeader(CaravanFollowable follower);
 	boolean canBeFollowed();
-	boolean isLeader();
+	boolean hasCaravanLeaderCondition();
 
-	default boolean isFollowing()
+	default boolean hasLeader()
 	{
-		return getFollowing() != null;
+		return getLeader() != null && ((MobEntity)getLeader()).isAlive();
 	}
 
-	default boolean isBeingFollowed()
+	default boolean hasFollower()
 	{
-		return getFollower() != null;
+		return getFollower() != null && ((MobEntity)getFollower()).isAlive();
 	}
 
-	default void stopFollowing()
+	default void removeLeader()
 	{
-		if(this.isFollowing())
+		if(this.hasLeader())
 		{
-			getFollowing().setFollower(null);
+			getLeader().setFollower(null);
 		}
-		setFollowing(null);
+		setLeader(null);
 	}
 }

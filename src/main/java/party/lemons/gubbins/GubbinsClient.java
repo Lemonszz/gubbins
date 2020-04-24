@@ -11,6 +11,7 @@ import net.minecraft.text.TranslatableText;
 import party.lemons.gubbins.entity.render.NewBoatRenderer;
 import party.lemons.gubbins.entity.render.PrismarineArrowRender;
 import party.lemons.gubbins.entity.render.StickyItemFrameRender;
+import party.lemons.gubbins.entity.render.camel.CamelRender;
 import party.lemons.gubbins.init.GubbinsColours;
 import party.lemons.gubbins.init.GubbinsEntities;
 import party.lemons.gubbins.init.GubbinsNetworkClient;
@@ -34,6 +35,7 @@ public class GubbinsClient implements ClientModInitializer
 		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.NEW_BOAT, (r, c)->new NewBoatRenderer(r));
 		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.PRISMARINE_ARROW, (r, c)->new PrismarineArrowRender(r));
 		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.STICKY_ITEM_FRAME, (r, c)->new StickyItemFrameRender(r, MinecraftClient.getInstance().getItemRenderer()));
+		EntityRendererRegistry.INSTANCE.register(GubbinsEntities.CAMEL, (r, c)->new CamelRender(r));
 
 		ParticleFactoryRegistryImpl.INSTANCE.register(GubbinsParticles.DYED_SIGNAL_SMOKE, provider->(parameters, world, x, y, z, velocityX, velocityY, velocityZ)->
 		{
