@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
@@ -20,8 +20,10 @@ import party.lemons.gubbins.util.EntityUtil;
 @Mixin(InGameHud.class)
 public class InGameHudMixin
 {
-	@Shadow private int scaledWidth;
-	@Shadow private int scaledHeight;
+	@Shadow
+	private int scaledWidth;
+	@Shadow
+	private int scaledHeight;
 
 	private final Identifier TELESCOPE_BLUR = new Identifier(Gubbins.MODID, "textures/misc/telescope_blur.png");
 

@@ -22,14 +22,14 @@
     "DefaultAttributeRegistryMixin"
   ],
   "client": [
-    "ItemRendererMixin",
-    "ArmorFeatureRendererMixin",
-    "GameRendererMixin",
-    "MouseMixin",
-    "InGameHudMixin",
-    "CreativeInventoryScreenMixin",
-    "MinecraftClientMixin",
-    "ModelLoaderMixin"
+    "client.ItemRendererMixin",
+    "client.ArmorFeatureRendererMixin",
+    "client.GameRendererMixin",
+    "client.MouseMixin",
+    "client.InGameHudMixin",
+    "client.CreativeInventoryScreenMixin",
+    "client.MinecraftClientMixin",
+    "client.ModelLoaderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

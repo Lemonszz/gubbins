@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;

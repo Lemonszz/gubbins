@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;

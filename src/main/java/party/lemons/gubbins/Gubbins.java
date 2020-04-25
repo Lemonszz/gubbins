@@ -34,7 +34,6 @@ public class Gubbins implements ModInitializer
 	public static final Identifier QUIVER_SCREEN = new Identifier(MODID, "quiver");
 	public static final Identifier BOAT_CHEST_SCREEN = new Identifier(MODID, "boat_chest");
 
-	private static final Identifier tabID = new Identifier(MODID, MODID);
 	public static ItemGroup GROUP;
 
 	public static GubbinsConfig config;

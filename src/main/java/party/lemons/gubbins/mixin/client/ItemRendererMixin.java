@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import com.google.common.collect.Maps;
 import net.minecraft.client.MinecraftClient;
@@ -94,7 +94,8 @@ public class ItemRendererMixin
 		this.renderBakedItemQuads(matrices, vertices, model.getQuads(null, null, random), light, overlay, color);
 	}
 
-	private void renderBakedItemQuads(MatrixStack matrices, VertexConsumer vertices, List<BakedQuad> quads, int light, int overlay, int color) {
+	private void renderBakedItemQuads(MatrixStack matrices, VertexConsumer vertices, List<BakedQuad> quads, int light, int overlay, int color)
+	{
 		MatrixStack.Entry entry = matrices.peek();
 
 		for(BakedQuad bakedQuad : quads)

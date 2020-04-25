@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;

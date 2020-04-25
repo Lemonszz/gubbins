@@ -1,4 +1,4 @@
-package party.lemons.gubbins.mixin;
+package party.lemons.gubbins.mixin.client;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
