@@ -4,14 +4,13 @@
   "package": "party.lemons.gubbins.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SmithingScreenHandlerMixin",
     "PlayerEntityMixin",
+    "SmithingScreenHandlerMixin",
     "ArrowItemMixin",
     "ConcretePowderBlockMixin",
     "PotionEntityMixin",
     "CampfireBlockEntityMixin",
     "CampfireBlockMixin",
-    "ChunkGeneratorMixin",
     "StructurePlacementDataMixin",
     "BiomeMixin",
     "SilkTouchEnchantmentMixin",
@@ -19,7 +18,10 @@
     "BoatEntityMixin",
     "LlamaEntityMixin",
     "GoalSelectorMixin",
-    "DefaultAttributeRegistryMixin"
+    "DefaultAttributeRegistryMixin",
+    "ChorusFruitItemMixin",
+    "AbstractBlockMixin",
+    "ShovelItemMixin"
   ],
   "client": [
     "client.ItemRendererMixin",
@@ -29,7 +31,10 @@
     "client.InGameHudMixin",
     "client.CreativeInventoryScreenMixin",
     "client.MinecraftClientMixin",
-    "client.ModelLoaderMixin"
+    "client.ModelLoaderMixin",
+    "client.BackgroundRendererMixin",
+    "client.ItemPropertyGetterMixin",
+    "client.DoubleOptionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -11,7 +11,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.inventory.BasicInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
@@ -19,6 +19,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.CustomPayloadS2CPacket;
 import net.minecraft.tag.FluidTags;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
@@ -41,7 +42,7 @@ public class NewBoatEntity extends BoatEntity
 	private static final String TAG_ITEMS = "Items";
 	private static final String TAG_SLOT = "Slot";
 
-	public final BasicInventory inventory = new BasicInventory(27);
+	public final SimpleInventory inventory = new SimpleInventory(27);
 
 	public NewBoatEntity(EntityType<? extends BoatEntity> entityType, World world)
 	{
@@ -182,22 +183,22 @@ public class NewBoatEntity extends BoatEntity
 	}
 
 	@Override
-	public boolean interact(PlayerEntity player, Hand hand)
+	public ActionResult interact(PlayerEntity player, Hand hand)
 	{
 		if(hasChest() && player.isSneaking())
 		{
 			openInventory(player);
-			return true;
+			return ActionResult.SUCCESS;
 		}
 
-		if(player.shouldCancelInteraction()) return false;
+		if(player.shouldCancelInteraction()) return ActionResult.PASS;
 
 		ItemStack stack = player.getStackInHand(hand);
-		if(!stack.isEmpty() && stack.getItem() == Blocks.CHEST.asItem() && !hasChest())
+		if(!stack.isEmpty() && stack.getItem() == Blocks.CHEST.asItem() && !hasChest() && !hasPassengers() )
 		{
 			setChest(true);
 			stack.decrement(1);
-			return true;
+			return ActionResult.PASS;
 		}
 
 		return super.interact(player, hand);

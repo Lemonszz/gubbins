@@ -19,12 +19,19 @@ public class DecorationBlockInfo
 	private final String name;
 	private final Block.Settings settings;
 	private final Block base;
+	private final Callback callback;
 
 	public DecorationBlockInfo(String name, Block baseBlock, Block.Settings settings)
+	{
+		this(name, baseBlock, settings, null);
+	}
+
+	public DecorationBlockInfo(String name, Block baseBlock, Block.Settings settings, Callback callback)
 	{
 		this.name = name;
 		this.settings = settings;
 		this.base = baseBlock;
+		this.callback = callback;
 	}
 
 	public DecorationBlockInfo slab()
@@ -66,9 +73,19 @@ public class DecorationBlockInfo
 		{
 			Block bl = Registry.register(Registry.BLOCK, key.make(name), blocks.get(key));
 			Registry.register(Registry.ITEM, key.make(name), new BlockItem(bl, GubbinsItems.settings()));
+
+			if(callback != null)
+			{
+				callback.onCreateBlock(bl);
+			}
 		}
 
 		return this;
+	}
+
+	public interface Callback
+	{
+		void onCreateBlock(Block block);
 	}
 
 	enum Type

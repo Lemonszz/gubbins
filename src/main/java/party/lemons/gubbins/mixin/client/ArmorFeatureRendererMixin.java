@@ -25,10 +25,10 @@ import party.lemons.gubbins.adornment.Adornment;
 import party.lemons.gubbins.adornment.Adornments;
 
 @Mixin(ArmorFeatureRenderer.class)
-public abstract class ArmorFeatureRendererMixin extends FeatureRenderer<LivingEntity, BipedEntityModel<LivingEntity>>
+public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, M extends BipedEntityModel<T>, A extends BipedEntityModel<T>> extends FeatureRenderer<T, M>
 {
-	@Inject(at = @At("RETURN"), method = "renderArmor(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/entity/LivingEntity;FFFFFFLnet/minecraft/entity/EquipmentSlot;ILnet/minecraft/client/render/entity/model/BipedEntityModel;)V")
-	private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, LivingEntity entity, float limbAngle, float limbDistance, float tickDelta, float customAngle, float headYaw, float headPitch, EquipmentSlot slot, int light, BipedEntityModel armorModel, CallbackInfo cbi)
+	@Inject(at = @At("RETURN"), method = "renderArmor(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/EquipmentSlot;ILnet/minecraft/client/render/entity/model/BipedEntityModel;)V")
+	private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T entity, EquipmentSlot slot, int light, A armorModel, CallbackInfo cbi)
 	{
 		ItemStack itemStack = entity.getEquippedStack(slot);
 		if (itemStack.getItem() instanceof ArmorItem)
@@ -40,11 +40,9 @@ public abstract class ArmorFeatureRendererMixin extends FeatureRenderer<LivingEn
 				if (adornment != null && armorItem.getSlotType() == slot)
 				{
 					this.getContextModel().setAttributes(armorModel);
-					armorModel.animateModel(entity, limbAngle, limbDistance, tickDelta);
 					this.setVisible(armorModel, slot);
-					armorModel.setAngles(entity, limbAngle, limbDistance, customAngle, headYaw, headPitch);
 					boolean bl = this.usesSecondLayer(slot);
-					boolean bl2 = itemStack.hasEnchantmentGlint();
+					boolean bl2 = itemStack.hasGlint();
 
 					int color = adornment.getColour();
 					float r = (float) (color >> 16 & 255) / 255.0F;
@@ -57,6 +55,7 @@ public abstract class ArmorFeatureRendererMixin extends FeatureRenderer<LivingEn
 		}
 	}
 
+
 	private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean glint, BipedEntityModel armorModel, boolean secondLayer, float red, float green, float blue) {
 		VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(secondLayer)), false, glint);
 		armorModel.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, red, green, blue, 1.0F);
@@ -67,7 +66,7 @@ public abstract class ArmorFeatureRendererMixin extends FeatureRenderer<LivingEn
 		return new Identifier(Gubbins.MODID, string);
 	}
 
-	public ArmorFeatureRendererMixin(FeatureRendererContext<LivingEntity, BipedEntityModel<LivingEntity>> context)
+	public ArmorFeatureRendererMixin(FeatureRendererContext<T, M> context)
 	{
 		super(context);
 	}

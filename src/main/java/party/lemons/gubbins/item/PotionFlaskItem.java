@@ -19,7 +19,10 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.*;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import party.lemons.gubbins.Gubbins;
 import party.lemons.gubbins.init.GubbinsItems;
@@ -32,8 +35,6 @@ public class PotionFlaskItem extends Item
 	public PotionFlaskItem()
 	{
 		super(GubbinsItems.settings().maxCount(1));
-
-		this.addPropertyGetter(new Identifier("full"), (stack, world, entity) ->(getUsages(stack) > 0 && getPotion(stack) != Potions.EMPTY) ? 1 : 0);
 	}
 
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
@@ -71,7 +72,7 @@ public class PotionFlaskItem extends Item
 		return stack;
 	}
 
-	public int getUsages(ItemStack stack)
+	public static int getUsages(ItemStack stack)
 	{
 		if(stack.getTag() == null || !stack.getTag().contains("usages"))
 			return 0;
@@ -86,7 +87,7 @@ public class PotionFlaskItem extends Item
 		stack.setTag(tags);
 	}
 
-	public Potion getPotion(ItemStack stack)
+	public static Potion getPotion(ItemStack stack)
 	{
 		return PotionUtil.getPotion(stack);
 	}
@@ -124,13 +125,13 @@ public class PotionFlaskItem extends Item
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		if(getUsages(stack) > 0)
 		{
-			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack), Gubbins.config.POTION_FLASK.maxSize).setStyle(Style.field_24360.setColor(Formatting.DARK_PURPLE)));
+			tooltip.add(new TranslatableText("gubbins.potion_flask_doses", getUsages(stack), Gubbins.config.POTION_FLASK.maxSize).setStyle(Style.EMPTY.withColor(Formatting.DARK_PURPLE)));
 		}
 
 		PotionUtil.buildTooltip(stack, tooltip, 1.0F);
 	}
 
-	public boolean hasEnchantmentGlint(ItemStack stack) {
-		return super.hasEnchantmentGlint(stack) || !PotionUtil.getPotionEffects(stack).isEmpty();
+	public boolean hasGlint(ItemStack stack) {
+		return super.hasGlint(stack) || !PotionUtil.getPotionEffects(stack).isEmpty();
 	}
 }

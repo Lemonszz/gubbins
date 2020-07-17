@@ -4,7 +4,7 @@ import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import party.lemons.gubbins.gen.cavebiome.CaveBiomeFeature;
@@ -32,7 +32,7 @@ public abstract class CaveBiome
 		this.rarity = rarity;
 	}
 
-	public void generate(Random random, IWorld world, BlockPos pos, CaveBiomeFeature.CavePositions positions, boolean floorEdge, boolean roofEdge, boolean sideEdge)
+	public void generate(Random random, ServerWorldAccess world, BlockPos pos, CaveBiomeFeature.CavePositions positions, boolean floorEdge, boolean roofEdge, boolean sideEdge)
 	{
 		BlockState currentState = world.getBlockState(pos);
 		BlockPos genPos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
@@ -66,20 +66,21 @@ public abstract class CaveBiome
 		}
 	}
 
-	protected boolean isSidePosition(IWorld world, BlockPos pos)
+	protected boolean isSidePosition(ServerWorldAccess world, BlockPos pos)
 	{
+		BlockPos.Mutable mutablePos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
 		for(Direction dir : GubbinsConstants.HORIZONTALS)
 		{
-			if(world.getBlockState(pos.offset(dir)).isAir())
+			if(world.getBlockState(mutablePos.move(dir)).isAir())
 				return true;
 		}
 
 		return false;
 	}
 
-	public abstract void generateFloor(IWorld world, BlockPos pos);
-	public abstract void generateSide(IWorld world, BlockPos pos);
-	public abstract void generateRoof(IWorld world, BlockPos pos);
+	public abstract void generateFloor(ServerWorldAccess world, BlockPos pos);
+	public abstract void generateSide(ServerWorldAccess world, BlockPos pos);
+	public abstract void generateRoof(ServerWorldAccess world, BlockPos pos);
 
 	public CaveBiome setRestrictedToBiome()
 	{
@@ -122,16 +123,16 @@ public abstract class CaveBiome
 		return maxHeight;
 	}
 
-	public void generateFinalFloorPass(IWorld world, Random random, BlockPos p)
+	public void generateFinalFloorPass(ServerWorldAccess world, Random random, BlockPos p)
 	{
 		
 	}
 
-	public void generateFinalRoofPass(IWorld world, Random random, BlockPos p)
+	public void generateFinalRoofPass(ServerWorldAccess world, Random random, BlockPos p)
 	{
 	}
 
-	public void generateFinalWallPass(IWorld world, Random random, BlockPos p)
+	public void generateFinalWallPass(ServerWorldAccess world, Random random, BlockPos p)
 	{
 	}
 }

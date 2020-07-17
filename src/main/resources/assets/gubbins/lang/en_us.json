@@ -45,6 +45,7 @@
   "block.gubbins.mossy_stone_slab": "Mossy Stone Slab",
   "block.gubbins.mossy_stone_stairs": "Mossy Stone Stairs",
   "block.gubbins.mossy_stone_wall": "Mossy Stone Wall",
+  "block.gubbins.enderpearl_block": "Ender Pearl Block",
   "block.gubbins.flint_block": "Flint Block",
   "block.gubbins.flint_shingles": "Flint Shingles",
   "block.gubbins.flint_shingle_slab": "Flint Shingle Slab",
@@ -66,5 +67,10 @@
   "subtab.utility": "Utility",
   "subtab.all": "All",
   "filled_map.jungle_pyramid": "Jungle Explorer Map",
-  "filled_map.biome": "Strange Land Explorer Map"
+  "filled_map.biome": "Strange Land Explorer Map",
+  "effect.gubbins.clarity": "Clarity",
+  "item.minecraft.potion.effect.clarity": "Potion of Clarity",
+  "item.minecraft.splash_potion.effect.clarity": "Splash Potion of Clarity",
+  "item.minecraft.lingering_potion.effect.clarity": "Lingering Potion of Clarity",
+  "item.minecraft.tipped_arrow.effect.clarity": "Arrow of Clarity"
 }

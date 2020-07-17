@@ -33,15 +33,25 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler
 		{
 			ItemStack armourStack = this.input.getStack(0);
 			ItemStack materialStack = this.input.getStack(1);
-			Adornment adornment = Adornments.REGISTRY.getForMaterial(materialStack.getItem());
-			if(adornment != null && !armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
+			Adornment materialAdornment = Adornments.REGISTRY.getForMaterial(materialStack.getItem());
+
+			if(!armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
 			{
-				ArmorItem armorItem = (ArmorItem) armourStack.getItem();
-				if(armorItem.getMaterial().getRepairIngredient().test(materialStack)) return;
+				if(materialAdornment != null)
+				{
+					ArmorItem armorItem = (ArmorItem) armourStack.getItem();
+					if(armorItem.getMaterial().getRepairIngredient().test(materialStack)) return;
+					if(armourStack.hasTag() && armourStack.getTag().contains("_adornment")) return;
 
-				if(armourStack.hasTag() && armourStack.getTag().contains("_adornment")) return;
-
-				cbi.setReturnValue(true);
+					cbi.setReturnValue(true);
+				}
+				else
+				{
+					if(armourStack.hasTag() && armourStack.getTag().contains("_adornment"))
+					{
+						cbi.setReturnValue(true);
+					}
+				}
 			}
 		}
 	}
@@ -49,33 +59,41 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler
 	@Inject(at = @At("TAIL"), method = "updateResult()V")
 	public void updateResult(CallbackInfo cbi)
 	{
-		if(!output.isEmpty())
+		if(!output.isEmpty() || !Gubbins.config.ADORNMENTS.enabled)
 			return;
 
 		ItemStack armourStack = this.input.getStack(0);
 		ItemStack materialStack = this.input.getStack(1);
 
 		Adornment adornment = Adornments.REGISTRY.getForMaterial(materialStack.getItem());
-		if(adornment != null && !armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
+		if(!armourStack.isEmpty() && armourStack.getItem() instanceof ArmorItem)
 		{
 			ArmorItem armorItem = (ArmorItem) armourStack.getItem();
-			if(armorItem.getMaterial().getRepairIngredient().test(materialStack))
-				return;
+			ItemStack outputStack = ItemStack.EMPTY;
 
-			if(armourStack.hasTag() && armourStack.getTag().contains("_adornment"))
-				return;
+			if(adornment != null)
+			{
+				if(armorItem.getMaterial().getRepairIngredient().test(materialStack)) return;
 
-			ItemStack outputStack = new ItemStack(armorItem);
-			CompoundTag origTag = armourStack.getTag();
-			CompoundTag newTag;
-			if(origTag == null)
-				newTag = new CompoundTag();
-			else
-				newTag = origTag.copy();
+				if(armourStack.hasTag() && armourStack.getTag().contains("_adornment")) return;
 
-			newTag.putString("_adornment", Adornments.REGISTRY.getId(adornment).toString());
-			outputStack.setTag(newTag);
+				outputStack = new ItemStack(armorItem);
+				CompoundTag origTag = armourStack.getTag();
+				CompoundTag newTag;
+				if(origTag == null) newTag = new CompoundTag();
+				else newTag = origTag.copy();
 
+				newTag.putString("_adornment", Adornments.REGISTRY.getId(adornment).toString());
+				outputStack.setTag(newTag);
+			}
+			else if(materialStack.isEmpty())
+			{
+				if(armourStack.hasTag() && armourStack.getTag().contains("_adornment"))
+				{
+					outputStack = armourStack.copy();
+					outputStack.getTag().remove("_adornment");
+				}
+			}
 			output.setStack(0, outputStack);
 		}
 	}

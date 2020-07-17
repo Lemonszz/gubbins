@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.6-SNAPSHOT'
+	id 'fabric-loom' version '0.4.29'
 	id 'maven-publish'
 }
 
@@ -13,6 +13,10 @@ group = project.maven_group
 repositories {
 	maven { url = "http://maven.fabricmc.net/" }
 	mavenCentral()
+}
+
+minecraft {
+	accessWidener "src/main/resources/gubbins.accesswidener"
 }
 
 dependencies {
@@ -57,25 +61,4 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 
 jar {
 	from "LICENSE"
-}
-
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			// add all the jars that should be included when publishing to maven
-			artifact(remapJar) {
-				builtBy remapJar
-			}
-			artifact(sourcesJar) {
-				builtBy remapSourcesJar
-			}
-		}
-	}
-
-	// select the repositories you want to publish to
-	repositories {
-		// uncomment to publish to the local maven
-		// mavenLocal()
-	}
 }

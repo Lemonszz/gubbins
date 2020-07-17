@@ -72,8 +72,9 @@ public class ItemRendererMixin
 			model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
 			matrices.translate(-0.5D, -0.5D, -0.5D);
 			if (!model.isBuiltin() && (stack.getItem() != Items.TRIDENT || bl2)) {
-				RenderLayer renderLayer = RenderLayers.getItemLayer(stack);
-				VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumers, renderLayer, true, stack.hasEnchantmentGlint());
+				boolean idk = renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND || renderMode == ModelTransformation.Mode.FIXED;
+				RenderLayer renderLayer = RenderLayers.getItemLayer(stack, idk);
+				VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumers, renderLayer, true, stack.hasGlint());
 				this.renderBakedItemModel(model, light, overlay, matrices, vertexConsumer, color);
 			}
 			matrices.pop();

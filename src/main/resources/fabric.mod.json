@@ -2,15 +2,13 @@
   "schemaVersion": 1,
   "id": "gubbins",
   "version": "${version}",
-
   "name": "Gubbins",
   "description": "A collection of gubbins!",
   "authors": [
     "Lemons"
   ],
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
-
+  "icon": "assets/gubbins/textures/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -23,7 +21,7 @@
   "mixins": [
     "gubbins.mixins.json"
   ],
-
+  "accessWidener" : "gubbins.accesswidener",
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
